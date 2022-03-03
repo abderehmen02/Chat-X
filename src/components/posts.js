@@ -18,16 +18,6 @@ function posts() {
 useEffect(() => {
   
     
-//     userdbdata.followings.forEach(item => {
-// db.collection('users').doc(item).onSnapshot(snapShot =>{
-//  const userPosts = snapShot.data().posts
-
-//  setPosts([...Posts , userPosts ])
-// })        
-//     }); 
-//     db.collection('posts').onSnapshot(snapshot =>{
-// setPosts( snapshot.docs.map(doc =>{ return  {post: doc.data() , id: doc.id  } })  )
-//     })
 }, [])
 
 useEffect(() => {

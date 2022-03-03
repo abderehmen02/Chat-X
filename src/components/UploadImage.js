@@ -1,11 +1,8 @@
 import React , {useState , useContext } from 'react'
 import { Button } from '@material-ui/core'
-import { Input } from '@material-ui/core'
-import { TextField } from '@material-ui/core'
 import { motion } from 'framer-motion'
 import shortid from 'shortid'
 import { db, FirebaseStorage , auth } from '../firebase'
-import { useHistory } from 'react-router-dom'
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import '../stylesheets/posts.css'
@@ -14,13 +11,9 @@ function UploadImage() {
     //hooks
 const [Caption, setCaption] = useState('')
 const [Image, setImage] = useState(null)
-const [User, setUser] = useState(null)
-const [Loading, setLoading] = useState(true)
 const [Upload, setUpload] = useState(0)
-const history = useHistory()
 const data = useContext(Data).user
 const userdbdata = useContext(Data).userdbdata 
-const userdb = useContext(Data).userdb
 
  // functions declarations
 const handleFiles = (event)=>{
@@ -65,7 +58,6 @@ profilePic: userdbdata.ProfilePic
 
 return(<motion.div  className='uploadImageComponent'>
 <div className='uploadInfo' >
-<progress className='uploadImageProgrss' value={Upload} className='progress' ></progress>
 <Button style={{marginTop: 10}} color='secondary' variant='contained'  onClick={uploadFile} > Upload </Button></div>
 <div className='postInfo'>
 <input className='fileInput' type='file' onChange={handleFiles}></input>

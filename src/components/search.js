@@ -6,14 +6,6 @@ import { useHistory } from 'react-router-dom';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import '../stylesheets/search.css'
-// import imgone from '../Images/1.jpg'
-// import imgtwo from '../Images/2.jpg'
-// import imgtree from '../Images/3.jpg'
-// import imgfour from '../Images/4.jpg'
-// import imgfive from '../Images/5.jpg'
-// import imgsix from '../Images/6.png'
-// import imgseven from '../Images/7.jpg'
-// import imgeight from '../Images/8.jpg'
 import logo from '../Images/logo.png'
 import { motion } from 'framer-motion';
 function search() {

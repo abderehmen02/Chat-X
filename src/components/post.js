@@ -151,32 +151,6 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
     )
   }
 ;
-//     return (
-//         <div className="post">
-// <DeleteForeverIcon onClick={postDeleted} />;       
-// <div className='heather'  onClick={()=>{history.push(`/acount/${props.userId}`)}} >
-// {/* profilePic */}
-// {/* ProfilePic */}
-// <Avatar  src={ProfilePic } />
-// <h4>{props.userName}</h4>
-// <h4 className="PostUserName"> {props.userName} </h4>
-// </div>
-// <div className="postImmage">
-//   {/* <img src={props.image}  className="img"/> */}
-//   <div className='img' style={{ backgroundImage: `url(${props.image})` }}></div>
-// </div>
-// <div className="caption">{props.caption}
-// </div>
-// <Checkbox icon={<FavoriteBorderIcon/>} checkedIcon={<FavoriteIcon/>} 
-// checked={IsLiked} onChange={likedIconChanged}
-// ></Checkbox>{Likes.length}
-// <ForumTwoToneIcon onClick={()=>{setCommentModal(true)}} />
-
-// <Dialog open={CommentModal} onClose={()=>{setCommentModal(false)}} >
-//   <CommentComponent></CommentComponent>
-// </Dialog>
-//         </div>
-//     )
 
  return (
         <div className='post' >

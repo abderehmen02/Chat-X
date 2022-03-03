@@ -35,14 +35,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
   height: 30vh;
   border-radius: 20px;
   border: 2px solid black;
   box-shadow: 2px 2px 3px black;
   background-color: rgb(14, 166, 226);
   flex-direction: column;
-  min-width: 50vw;
 }
 .uploadImageComponent > * {
   margin: 10px;
@@ -54,6 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-direction: column;
 }
 .postInfo .captionInput {
   font-size: 1.3em;
@@ -68,13 +67,12 @@
 }
 .postInfo .fileInput {
   font-size: 1em;
-  width: 40%;
   font-family: sans-serif;
   font-weight: bold;
-  border: 2px solid black;
+  cursor: pointer;
   border-radius: 5px;
-  background-color: aqua;
   margin: 15px;
+  padding: 6px;
 }
 .uploadInfo {
   display: flex;
@@ -112,11 +110,6 @@
 }
 .searchIcon {
   cursor: pointer;
-}
-.searchIcon:hover {
-  box-shadow: 2px 2px 3px rgb(216, 197, 197);
-  background-color: rgb(2, 2, 2);
-  color: rgb(241, 241, 214);
 }
 .postsComponent {
   width: 100%;
@@ -205,11 +198,19 @@
   }
   .uploadInfo {
     flex-direction: column;
+    width: 90%;
   }
   .postInfo {
     flex-direction: column;
     justify-content: space-around;
     font-size: 13px;
+    width: 100%;
+  }
+  .fileInput {
+    width: fit-content;
+  }
+  .captionInput {
+    width: fit-content;
   }
   .post {
     width: 100%;

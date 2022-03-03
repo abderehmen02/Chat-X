@@ -23,10 +23,7 @@ const history = useHistory()
 
 const add = (event)=>{
 
-  // console.log(db.collection('users').doc('uid').update)
-    // if(!age  ||  !FirstName || !password || !UserName || !LastName ){
-    //     alert('please fil all the requiremet')
-    // }
+ 
     event.preventDefault() ;
 auth.createUserWithEmailAndPassword(email, password).then(res =>{ 
 auth.currentUser.updateProfile({

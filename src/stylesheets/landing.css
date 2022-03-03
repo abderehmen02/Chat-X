@@ -62,6 +62,7 @@
     flex-direction: row;
     max-height: 10vh;
     width: 95vw;
+    padding: 10px;
   }
   .verifyMessage {
     margin: 10px;
