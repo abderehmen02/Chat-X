@@ -63,16 +63,17 @@
   font-weight: bolder;
 }
 .postInfo .captionInput:focus {
-  box-shadow: 3px 4px 4px yellow;
+  border: 2px solid red;
 }
 .postInfo .fileInput {
   font-size: 1em;
   font-family: sans-serif;
   font-weight: bold;
   cursor: pointer;
+  border: 2px solid black;
   border-radius: 5px;
   margin: 15px;
-  padding: 6px;
+  padding: 2px;
 }
 .uploadInfo {
   display: flex;

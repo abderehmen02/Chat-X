@@ -88,8 +88,7 @@ boxShadow: '2px 2px 2px black'
   }
 }))
 function Acount() {
-    // newFollowing = [] ----------------------------
-   
+  
 //hooks
 const classes = useStyles()
     const params = useParams()
@@ -108,7 +107,6 @@ const classes = useStyles()
     const data = useContext(Data).user
     const userdb = useContext(Data).userdb
     const userdbdata = useContext(Data).userdbdata
-    // const userdb = useContext(Data).userdb 
     const [LoadingFollowers, setLoadingFollowers] = useState(true)
     const [FollowerModal, setFollowerModal] = useState(false)
      const [UserName, setUserName] = useState('')
@@ -285,7 +283,7 @@ followerdata.map(user =>{
             <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
  {Posts.map(item =>{
         return <div className='postInProfile'>
-         <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.descreption}
+         <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
 ProfilePic={item.profilePic} userName={item.userName} 
 Timestamp={item.timestamp} /></div>
     } )}      
@@ -328,7 +326,7 @@ checkedIcon={<CheckCircleIcon className={classes.checked} />}
             
  {Posts.map(item =>{
         return <div className='postInProfile'>
-         <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.descreption}
+         <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
 ProfilePic={item.profilePic} userName={item.userName} 
 Timestamp={item.timestamp}/> </div>
     } )}    

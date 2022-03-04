@@ -1,12 +1,9 @@
 import React , {useState , useContext } from 'react'
 import { Button } from '@material-ui/core'
-import { Input } from '@material-ui/core'
-import { TextField } from '@material-ui/core'
 import { motion  , AnimatePresence} from 'framer-motion'
 import shortid from 'shortid'
 import { db, FirebaseStorage , auth } from '../firebase'
 import { useHistory } from 'react-router-dom'
-import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import { Data } from '../App'
 function UploadProfileImg() {

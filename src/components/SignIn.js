@@ -2,7 +2,6 @@ import React ,  {useState} from 'react'
 import Modal from '@material-ui/core/Modal';
 import  Input  from '@material-ui/core/Input';
 import  Button  from '@material-ui/core/Button';
-import Welcome from './welcome';
 import {auth} from '../firebase'
 import {  BrowserRouter as Router,Link , useParams,  Route, Switch} from 'react-router-dom'
 import { useHistory } from 'react-router-dom';

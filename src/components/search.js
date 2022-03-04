@@ -1,10 +1,9 @@
 import React , {useState , useEffect } from 'react'
-import { duration, Input } from '@material-ui/core'
+import {  Input } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import { db } from '../firebase';
 import { useHistory } from 'react-router-dom';
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import InputAdornment from '@material-ui/core/InputAdornment'
 import '../stylesheets/search.css'
 import logo from '../Images/logo.png'
 import { motion } from 'framer-motion';
@@ -64,13 +63,8 @@ db.collection('users').where('userName' , '==' , event.target.value).get().then(
     }}
 
     className='logoOverlay' ></motion.div> </motion.div> 
-{/* <motion.div animate={{x: ['0vw' ,'-100vw' ,'-200vw' ,'-300vw' ]  }} transition={{times: [ 5 , 5 , 5 , 5]}}  className='imageSlider'  > <div className='slider' style={{ backgroundImage: `url(${imgone})` }} ></div> <div className='slider' style={{ backgroundImage: `url(${imgtwo})` }}  > </div><div className='slider' style={{ backgroundImage: `url(${imgtree})` }} ></div> <div className='slider' style={{ backgroundImage: `url(${imgfour})` }}  > </div><div className='slider' style={{ backgroundImage: `url(${imgfive})` }} ></div> <div className='slider' style={{ backgroundImage: `url(${imgsix})` }}  > </div><div className='slider' style={{ backgroundImage: `url(${imgseven})` }} ></div> <div className='slider' style={{ backgroundImage: `url(${imgeight})` }}  > </div> </motion.div> */}
-<div className='searchBar'> <Input onChange={research} startAdornment={
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          } ></Input> <SearchIcon/> </div>     
-<div >  
+<div className='searchBar'> <Input startAdornment={<AccountCircle/>} onChange={research}  ></Input> <SearchIcon/> </div>     
+<div>
 {UserSearched.map(user =>{
     return <motion.div  className='users' initial={{x: '100vw'}} animate={{x: 0 , transform: {duration: 0.5 , delay: 0.5}}} className='user' onClick={()=>{ history.push(`/acount/${user.id}`)}}>
      {user.data().FirstName}  {user.data().lastName} 

@@ -42,29 +42,6 @@
   text-shadow: 1px 1px 5px black;
   cursor: pointer;
 }
-/* .imageSlider {
-  width: 400vw;
-  height: 40vh;
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  background-position: center;
-  background-size: cover;
-  background-color: aliceblue;
-  display: flex;
-}
-.slider {
-  width: 50vw;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  background-color: black;
-}
-.slider {
-  position: relative;
-  width: 100vw;
-  height: 400px;
-} */
 .myLogo {
   width: 100px;
   height: 100px;

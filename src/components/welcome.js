@@ -4,8 +4,17 @@ import { Button  } from '@material-ui/core'
 import { motion } from 'framer-motion'
 import logo from '../Images/logo.png'
 import '../stylesheets/welcome.css'
+import {useHistory} from 'react-router-dom'
+import { auth } from '../firebase' 
 function welcome() {
- 
+  console.log(process.env);
+const history = useHistory()
+
+const signInAsAGuest = ()=>{
+auth.signInWithEmailAndPassword( process.env.REACT_APP_EmailGuest , process.env.REACT_APP_passwordGuest ).then(()=>{
+history.push('/landing')
+}).catch(err => alert(err))
+} 
     return (
         <motion.div initial={{y: '100vh'}} animate={{y: 0}} transition={{duration: 0.5}} className='welcome' >
        <section className='welcomeBackground' >
@@ -47,7 +56,7 @@ function welcome() {
             
      </div>
      </section>
-{/* the actual page */}
+
           <motion.div
   className='myLogo' 
   style={{
@@ -78,6 +87,7 @@ function welcome() {
           <div className='buttons'  >
      <div className='btn' >       <Button size='large'   variant='contained' color='secondry' ><Link style={{textDecoration : 'none'}} to='/SignIn'>Sign In</Link></Button></div>
       <div className='btn' >      <Button size='large' variant='contained' color='primary' ><Link  style={{textDecoration: 'none'}} to='/SignUp'>Sign Up</Link></Button></div>
+      <div className='btn' onClick={signInAsAGuest} > <Button size='large'  variant="contained" color="secondary" > Sign In As A Guest  </Button> </div>
         </div></motion.div>
     )
 }

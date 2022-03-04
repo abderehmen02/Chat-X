@@ -155,7 +155,7 @@ section {
   top: 0px;
   left: 0px;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
 }
 /* sign up from  */
 .SignUpForm {
@@ -192,15 +192,11 @@ div > input {
   top: 0px;
   right: 0px;
   font-size: 1.1em;
-  box-shadow: 2px 2px 5px black;
-  border: 1px solid black;
   border-radius: 10px;
   text-align: center;
   padding-left: 5px;
 }
-div > input:focus {
-  box-shadow: 2px 2px 5px white;
-}
+
 div > label {
   font-size: 1.2em;
   font-family: "Courier New", Courier, monospace;
@@ -251,7 +247,7 @@ label {
 }
 @media all and (max-width: 500px) {
   .form {
-    width: 95vw;
+    width: 95vh;
     height: 100vh;
   }
   .form div {

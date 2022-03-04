@@ -39,7 +39,7 @@ db.collection('users').doc(item).collection('posts').where('timestamp' , '>' , f
         <div className='postsComponent'>
         <h2 className='tittlePosts' > Recent Posts </h2>
     {Posts.map(item =>{
-        return <div className='SinglePostDiv' > <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.descreption}
+        return <div className='SinglePostDiv' > <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
 ProfilePic={item.profilePic} userName={item.userName} 
 Timestamp={item.timestamp}
 /> </div>

@@ -6,7 +6,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -124,7 +123,6 @@ snapshot.forEach(doc =>{
     const addComment = ()=>{
       const id = shortid.generate()
 db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).collection('comments').doc(id).set({
-//  timestamp : firebase.firestore.FieldValue.serverTimestamp() ,
  comment: comment, 
  userId : data.uid  ,
  userName: userdbdata.userName,                 
@@ -151,7 +149,7 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
     )
   }
 ;
-
+console.log(props);
  return (
         <div className='post' >
              <Card >
@@ -173,7 +171,7 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
         title="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="h3">
 {props.caption}
         </Typography>
       </CardContent>
