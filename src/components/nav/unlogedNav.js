@@ -3,9 +3,14 @@ import React from 'react'
 import logo from '../../Images/logo.png'
 import {motion} from 'framer-motion' ;
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PersonIcon from '@mui/icons-material/Person';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const TopNav = ()=>{
-    return <Stack><i class="bi bi-list"></i> <Typography> Chat WX  an app  build for communication </Typography> <img style={{width : '100px' , height : '100px'}} src={logo} ></img> </Stack>
+    return <Stack direction="row" width="100vw" justifyContent="space-around"  alignItems="center"  ><Typography color={(theme)=>theme.palette.white.light} > <FormatListBulletedIcon color='#fff' /></Typography> <Typography variant='h3'  color={(theme)=>theme.palette.white.light} > Chat WX  an app  build for communication </Typography> <img style={{width : '80px' , height : '80px'}} src={logo} ></img> </Stack>
 }
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router,Link , useParams,  Route, Switch} from 'react-router-dom'
 import { motion   } from 'framer-motion'
 import {Stack, Typography , Button} from '@mui/material'
@@ -13,23 +13,24 @@ import HomeImage from '../Images/homeImg.png'
 
 function welcome() {
 const history = useHistory()
-
+const [Nav, setNav] = useState(false)
 const signInAsAGuest = ()=>{
 auth.signInWithEmailAndPassword( process.env.REACT_APP_EmailGuest , process.env.REACT_APP_passwordGuest ).then(()=>{
 history.push('/landing')
 }).catch(err => alert(err))
 } 
     return (
-        <Stack direction="column"  width='100vw' sx={{backgroundColor : 'secondary.dark' , alignItems:"center" , minHeight: '100vh'   }} >
-<TopNav/>
-<Stack direction="row" sx={{border: '2px solid red' , width : '95%' , justifyContent :'space-around' , alignItems: 'center' }} >
-<img height="300px"  width="200px" src={HomeImage} ></img>
-<Stack sx={{border: '2px solid red'  }} alignItems="center" height='60vh' >
+        <Stack spacing="40px" direction="column"  width='100vw' sx={{backgroundColor : 'secondary.dark' , alignItems:"center" , minHeight: '100vh'   }} >
+<TopNav setNav={setNav} />
+<SideBar Nav={Nav} setNav={setNav} />
+<Stack direction="row" sx={{ width : '95%' , justifyContent :'space-around' , alignItems: 'center' }} >
+<img height="300px"   src={HomeImage} ></img>
+<Stack  alignItems="center" height='60vh' >
 <Stack alignItems="center" >
 <Typography variant='h2' textAlign='center'  color="primary" >Welcome to CHAT WX</Typography>
 <Typography color="#fff" >Where all comunities come together</Typography>
 </Stack>
-<Stack direction='column' gap="8px" sx={{border: '2px solid green'}} height="100%" justifyContent="space-around" >
+<Stack direction='column' gap="8px"  height="100%" justifyContent="space-around" >
 <Stack direction="row" spacing={2} ><Button variant='contained'  >Log In</Button><Button variant='outlined' >Sign Up</Button> </Stack>
 <Button width="100%" variant="standard" >Sign In As A Guest</Button>
 <Button variant="contained" >About This Project</Button>
