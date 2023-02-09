@@ -5,7 +5,7 @@ import {motion} from 'framer-motion' ;
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export const TopNav = ()=>{
-    return <Stack><img style={{width : '100px' , height : '100px'}} src={logo} ></img> <Typography> Chat WX  an app  build for communication </Typography></Stack>
+    return <Stack><i class="bi bi-list"></i> <Typography> Chat WX  an app  build for communication </Typography> <img style={{width : '100px' , height : '100px'}} src={logo} ></img> </Stack>
 }
 
 
