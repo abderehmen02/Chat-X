@@ -19,7 +19,7 @@ yesterday.setDate(today.getDate() - 1);
 
 
 function App() { 
-  console.log(process.env);
+  console.log("app");
   // hooks
   const [user, setUser] = useState(null)
   const [Loading, setLoading] = useState(true)
@@ -54,7 +54,6 @@ if(!user){
 <Route  path='/SignUp'> <SignUp/> </Route>
 <Route path='/SignIn'><SignIn/></Route>
 <Route  path='/'><Welcome/> </Route>
-
  </Switch>
   </Router>
 }
