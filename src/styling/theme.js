@@ -2,6 +2,10 @@ import {createTheme} from '@mui/material'
 
 
 
+
+
+
+
 const theme = createTheme({
     palette : {
         primary : {
@@ -35,6 +39,7 @@ const theme = createTheme({
         {
           props: { variant: 'contained' },
           style: {
+            
             backgroundColor : '#53E05D' ,
             color : '#5222E0' ,
             borderRadius : '8px' ,

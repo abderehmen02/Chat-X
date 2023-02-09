@@ -7,9 +7,11 @@ import SignUp from './components/SignUp';
 import {auth, db} from './firebase';
 import Landing from './components/landing';
 import Welcome from './components/welcome';
+import theme from './styling/theme'
 import EmailVereficaion from './components/emailVereficaion';
 import Acount from './components/acount';
 import Search from './components/search';
+import { ThemeProvider } from '@mui/system';
 export const Data = React.createContext()
 let today = new Date();
 let yesterday = new Date();
@@ -48,7 +50,8 @@ if(Loading){
   return <h4>Loading...</h4>
 }
 if(!user){
-  return <Router>
+  return<ThemeProvider theme={theme} >
+   <Router>
   <Switch>
    <Route path='/VerifyEmail'><EmailVereficaion/></Route>
 <Route  path='/SignUp'> <SignUp/> </Route>
@@ -56,6 +59,7 @@ if(!user){
 <Route  path='/'><Welcome/> </Route>
  </Switch>
   </Router>
+  </ThemeProvider>
 }
   return (
     <Data.Provider value={{user ,  userdb , userdbdata } }>
