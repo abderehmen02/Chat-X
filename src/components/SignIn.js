@@ -53,14 +53,14 @@ const history = useHistory()
             <Typography textAlign="center" color="primary" variant="h2" >Sign In</Typography>
             <FormControl>
             <Stack spacing={2} >
-            <StyledTextField variant="outlined" sx={{textShadow : 'none'}} label="email" ></StyledTextField>
-            <StyledTextField variant='outlined'  label="password" > </StyledTextField>
-            <Button type='submit' variant="contained" >Login</Button>
+            <StyledTextField value={Email} onChange={(e)=>setEmail(e.target.value)}  variant="outlined" sx={{textShadow : 'none'}} label="email" ></StyledTextField>
+            <StyledTextField value={Password} onChange={(e)=>setPassword(e.target.value)} variant='outlined'  type="password" label="password" > </StyledTextField>
+            <Button type='submit' variant="contained"  onClick={authSignIn}>Login</Button>
             </Stack>
             </FormControl>
             <Stack width="100%" alignItems="center"  spacing={2} >
                 <Typography color="white.light" variant="h3" >Don't have an account ?</Typography>
-                <Button variant="standard" sx={{width : '100%'}} > Regester </Button>
+                <Link style={{textDecoration: 'none' , color: 'inherit'  , width:'100%'  }} to="/regester" ><Button variant="standard" sx={{width : '100%'}} > Regester </Button></Link>
             </Stack>
         </Stack>
         <img src={SignInImage}  ></img>

@@ -79,15 +79,15 @@ alert(error.message)
 <TopNav Nav={Nav} setNav={setNav} />
 <SideBar Nav={Nav} setNav={setNav} />
 <Stack direction="row" width="90%"  alignItems="center" justifyContent="space-around" >
-<Stack alignItems="center" spacing={2} >
+<Stack alignItems="center" spacing={8}  >
   <Stack alignItems="center" spacing={1}  >
     <Typography sx={{fontSize : '24px'}} textAlign="center" color="#fff" >Already have an account ?</Typography>
-    <Button variant="contained" sx={{width:"100%"}} >Login</Button>
+    <Button variant="standard" sx={{width:"100%"}} >Login</Button>
   </Stack>
   <img src={signUpImage}  ></img>
 </Stack>
 <Stack alignItems="center" spacing={2} >
-<Typography variant="h3" color="primary" textAlign="center" margin="8px" >Sign Up</Typography>
+<Typography sx={{fontSize  :'24px'}} color="primary" textAlign="center" margin="8px" >Sign Up</Typography>
 <Stack spacing={2} direction="row" >
       <StyledTextField label="first name" />
       <StyledTextField label="last name" />
