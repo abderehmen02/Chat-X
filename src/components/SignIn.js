@@ -1,12 +1,34 @@
 import React ,  {useState} from 'react'
-import  Input  from '@material-ui/core/Input';
-import  Button  from '@material-ui/core/Button';
 import { Modal } from '@material-ui/core';
 import {auth} from '../firebase'
 import {  BrowserRouter as Router,Link , useParams,  Route, Switch} from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import '../stylesheets/SignIn.css';
+import SignInImage from '../Images/SignInImg.png'
+import { FormControl, styled , Button ,Stack, TextField ,  Typography } from '@mui/material';
+import {TopNav , SideBar} from './nav/unlogedNav'
+
+const StyledTextField =  styled(TextField)(({theme})=>({
+ '& label': {
+    color: '#fff' ,
+    textShadow : 'none'
+  },
+   '& label.Mui-focused': {
+    textShadow  : 'none'
+  },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
+      },
+       '&:hover fieldset': {
+         borderColor: theme.palette.primary.main,
+       },
+    },
+  
+}));
+
 function SignIn() {
+const [Nav, setNav] = useState(false)
 const [Email, setEmail] = useState('')
 const [Password, setPassword] = useState('')
 const history = useHistory()
@@ -22,23 +44,45 @@ const history = useHistory()
     })
     }
      const [Open, setOpen] = useState(true)
-    return (<div>
-
-        <Modal className="SignInModal" open={Open} onClose={()=>{setOpen(false)   ; history.push('/')}}>
-<div class='SignInRealModal'>
-<h4 className='signIntittle'>Sign In</h4>
-<Input value={Email} onChange={(event)=>{setEmail(event.target.value)}} className='userName SignInInput' placeholder="User Name"></Input>
-<Input value={Password} onChange={(event)=>{setPassword(event.target.value)}} className='lastName SignInInput' placeholder="Password"></Input>
-<div className='SignInButtons'>
-<Button className='SignInButton button' onClick={authSignIn} variant='contained' color='secondary' >Sgin In</Button>
-<Link to='/SignUp' style={{textDecoration: 'none'}}>
-<Button className='SignUpButton button' variant='contained' color='secondary'>Sign Up</Button>
-</Link>
-</div>
-</div>
-</Modal>
-</div>
+    return (
+        <Stack  sx={{ alignItems: 'center' , backgroundColor: 'secondary.dark' , width: '100vw' , minHeight: '100vh' }} onClick={()=>{setNav(false)}} spacing="64px" >
+        <TopNav Nav={Nav} setNav={setNav} ></TopNav>
+        <SideBar Nav={Nav} setNav={setNav} />
+        <Stack direction="row" width="90%"  justifyContent="space-around" >
+        <Stack spacing={5} width="40vw"  >
+            <Typography textAlign="center" color="primary" variant="h2" >Sign In</Typography>
+            <FormControl>
+            <Stack spacing={2} >
+            <StyledTextField variant="outlined" sx={{textShadow : 'none'}} label="email" ></StyledTextField>
+            <StyledTextField variant='outlined'  label="password" > </StyledTextField>
+            <Button type='submit' variant="contained" >Login</Button>
+            </Stack>
+            </FormControl>
+            <Stack width="100%" alignItems="center"  spacing={2} >
+                <Typography color="white.light" variant="h3" >Don't have an account ?</Typography>
+                <Button variant="standard" sx={{width : '100%'}} > Regester </Button>
+            </Stack>
+        </Stack>
+        <img src={SignInImage}  ></img>
+        </Stack>
+        </Stack>
     )
+//     <div>
+
+//         <Modal className="SignInModal" open={Open} onClose={()=>{setOpen(false)   ; history.push('/')}}>
+// <div class='SignInRealModal'>
+// <h4 className='signIntittle'>Sign In</h4>
+// <Input value={Email} onChange={(event)=>{setEmail(event.target.value)}} className='userName SignInInput' placeholder="User Name"></Input>
+// <Input value={Password} onChange={(event)=>{setPassword(event.target.value)}} className='lastName SignInInput' placeholder="Password"></Input>
+// <div className='SignInButtons'>
+// <Button className='SignInButton button' onClick={authSignIn} variant='contained' color='secondary' >Sgin In</Button>
+// <Link to='/SignUp' style={{textDecoration: 'none'}}>
+// <Button className='SignUpButton button' variant='contained' color='secondary'>Sign Up</Button>
+// </Link>
+// </div>
+// </div>
+// </Modal>
+// </div>
 }
 
 export default SignIn

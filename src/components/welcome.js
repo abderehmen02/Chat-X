@@ -25,12 +25,12 @@ history.push('/landing')
 <SideBar Nav={Nav} setNav={setNav} logo={logo} />
 <Stack direction="row" sx={{ width : '95%' , justifyContent :'space-around' , alignItems: 'center' }}  >
 <img height="300px"   src={HomeImage} ></img>
-<Stack  alignItems="center" height='60vh' >
+<Stack spacing={5} alignItems="center" height='60vh' >
 <Stack alignItems="center" >
 <Typography variant='h2' textAlign='center'  color="primary" >Welcome to CHAT WX</Typography>
 <Typography color="#fff" >Where all comunities come together</Typography>
 </Stack>
-<Stack direction='column' gap="8px"  height="100%" justifyContent="space-around" >
+<Stack direction='column' gap="4px" height="100%"   justifyContent="space-around" >
 <Stack direction="row" spacing={2} ><Button variant='contained'  >Log In</Button><Button variant='outlined' >Sign Up</Button> </Stack>
 <Button width="100%" variant="standard" >Sign In As A Guest</Button>
 <Button variant="contained" >About This Project</Button>
