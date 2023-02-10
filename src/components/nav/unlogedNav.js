@@ -36,7 +36,7 @@ useEffect(() => {
 
 
 
-return <motion.div initial={{x: 0}} animate={navAnimate}  style={{position : 'absolute' , top : '0px' , left : '50px' }}  >{Nav ? 
+return <motion.div initial={{x: 0}} animate={navAnimate}  style={{position : 'absolute' , top : '0px' , left : '50px'  , zIndex : 3 }}  >{Nav ? 
 <Stack sx={{borderRadius : '8px' , padding : '24px' , backgroundColor: '#fff' }}  >
 <Box sx={{width : '100%' , backgroundColor : '#fff', display : 'flex' , alignItems: 'center' , justifyContent: 'center' , padding : '8px 0px' }} >       
       <motion.div

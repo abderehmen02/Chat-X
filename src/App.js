@@ -54,7 +54,7 @@ if(!user){
    <Router>
   <Switch>
    <Route path='/VerifyEmail'><EmailVereficaion/></Route>
-<Route  path='/SignUp'> <SignUp/> </Route>
+<Route  path='/regester'> <SignUp/> </Route>
 <Route path='/login'><SignIn/></Route>
 <Route  path='/'><Welcome/> </Route>
  </Switch>
