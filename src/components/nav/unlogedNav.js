@@ -79,24 +79,26 @@ return <motion.div initial={{x: 0}} animate={navAnimate}  style={{position : 'ab
       }
     >  <Link to="/"  style={{textDecoration : 'none'}} > <ListItemButton>
         <ListItemIcon>
- <i className="bi bi-house-door-fill"></i>
+        <HomeIcon/>
        </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItemButton></Link>
      <Link to="/login" style={{textDecoration : 'none'}} ><ListItemButton>
         <ListItemIcon>
- <i className="bi bi-person"></i>
+        <PersonIcon/>
        </ListItemIcon>
         <ListItemText primary="Login" />
       </ListItemButton></Link>
 <Link to="regester" style={{textDecoration : 'none'}}><ListItemButton>
         <ListItemIcon>
-<i className="bi bi-person-plus-fill"></i>        </ListItemIcon>
+        <PersonAddIcon/>
+        </ListItemIcon>
         <ListItemText primary="Regester" />
       </ListItemButton></Link>
  <Link to="/about"  style={{textDecoration : 'none'}}  >          <ListItemButton>
         <ListItemIcon>
- <i className="bi bi-newspaper"></i>       </ListItemIcon>
+       <ReceiptIcon/>
+      </ListItemIcon>
         <ListItemText primary="About" />
       </ListItemButton> </Link>
     </List> </Stack>

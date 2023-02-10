@@ -12,6 +12,7 @@ import EmailVereficaion from './components/emailVereficaion';
 import Acount from './components/acount';
 import Search from './components/search';
 import { ThemeProvider } from '@mui/system';
+import AboutPage from './components/about';
 export const Data = React.createContext()
 let today = new Date();
 let yesterday = new Date();
@@ -56,6 +57,7 @@ if(!user){
    <Route path='/VerifyEmail'><EmailVereficaion/></Route>
 <Route  path='/regester'> <SignUp/> </Route>
 <Route path='/login'><SignIn/></Route>
+<Route path="/about" ><AboutPage/></Route>
 <Route  path='/'><Welcome/> </Route>
  </Switch>
   </Router>

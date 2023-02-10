@@ -75,7 +75,7 @@ alert(error.message)
 )
 }
     return (
-   <Stack sx={{backgroundColor: 'secondary.main' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
+   <Stack sx={{backgroundColor: 'secondary.dark' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
 <TopNav Nav={Nav} setNav={setNav} />
 <SideBar Nav={Nav} setNav={setNav} />
 <Stack direction="row" width="90%"  alignItems="center" justifyContent="space-around" >

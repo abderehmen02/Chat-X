@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router,Link , useParams,  Route, Switch} from 'react-router-dom'
-import { motion   } from 'framer-motion'
+import {Link} from 'react-router-dom'
 import {Stack, Typography , Button} from '@mui/material'
 import logo from '../Images/logo.png'
 import '../stylesheets/welcome.css'
@@ -31,9 +30,9 @@ history.push('/landing')
 <Typography color="#fff" >Where all comunities come together</Typography>
 </Stack>
 <Stack direction='column' gap="4px" height="100%"   justifyContent="space-around" >
-<Stack direction="row" spacing={2} ><Button variant='contained'  >Log In</Button><Button variant='outlined' >Sign Up</Button> </Stack>
-<Button width="100%" variant="standard" >Sign In As A Guest</Button>
-<Button variant="contained" >About This Project</Button>
+<Stack direction="row" spacing={2} ><Link to="/login" style={{textDecoration : 'none'}} > <Button variant='contained'  >Log In</Button></Link><Link to="/regester" style={{textDecoration : 'none'}}><Button variant='outlined'   >Regester</Button></Link> </Stack>
+<Button width="100%" variant="standard" onClick={signInAsAGuest} >Sign In As A Guest</Button>
+<Button variant="contained" width="100%" ><Link to="/about" style={{textDecoration : 'none' }} >About This Project</Link></Button>
           {/* <div className='buttons'  >
      <div className='btn' >       <Button size='large'   variant='contained' color='secondry' ><Link style={{textDecoration : 'none'}} to='/SignIn'>Sign In</Link></Button></div>
       <div className='btn' >      <Button size='large' variant='contained' color='primary' ><Link  style={{textDecoration: 'none'}} to='/SignUp'>Sign Up</Link></Button></div>
