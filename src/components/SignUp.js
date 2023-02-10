@@ -1,17 +1,18 @@
 import React , {useState , useEffect} from 'react'
 import { auth  , db} from '../firebase'
-import { Modal , Button, Typography, TextField } from '@material-ui/core'
+import { Modal } from '@material-ui/core'
 import * as firebase from 'firebase/app'
 import { motion } from 'framer-motion'
 import 'firebase/firestore'
 import '../stylesheets/welcome.css'
-
+import signUpImage  from '../Images/regesterImg.png'
 import { useHistory } from 'react-router-dom'
-import { Stack } from '@mui/material'
+import { Stack ,styled ,  Button, Typography, TextField } from '@mui/material'
 import { SideBar, TopNav } from './nav/unlogedNav'
 function SignUp() {
 
 //hooks
+const [Nav, setNav] = useState(false)
 const [UserName, setUserName] = useState('')
 const [FirstName, setFirstName] = useState('')
 const [LastName, setLastName] = useState('')
@@ -24,6 +25,7 @@ const history = useHistory()
 
 
 const StyledTextField =  styled(TextField)(({theme})=>({
+  width: '100%'  ,
  '& label': {
     color: '#fff' ,
     textShadow : 'none'
@@ -73,18 +75,20 @@ alert(error.message)
 )
 }
     return (
-   <Stack>
-<TopNav></TopNav>
-<SideBar/>
-<Stack direction="row" >
-<Stack>
-  <Stack>
-    <Typography variant='h3' color="white.light" >Already have an account ?</Typography>
-    <Button variant="contained" >Login</Button>
+   <Stack sx={{backgroundColor: 'secondary.main' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
+<TopNav Nav={Nav} setNav={setNav} />
+<SideBar Nav={Nav} setNav={setNav} />
+<Stack direction="row" width="90%"  alignItems="center" justifyContent="space-around" >
+<Stack alignItems="center" spacing={2} >
+  <Stack alignItems="center" spacing={1}  >
+    <Typography sx={{fontSize : '24px'}} textAlign="center" color="#fff" >Already have an account ?</Typography>
+    <Button variant="contained" sx={{width:"100%"}} >Login</Button>
   </Stack>
-  <img src={signUpImage} ></img>
+  <img src={signUpImage}  ></img>
 </Stack>
-<Stack><Stack>
+<Stack alignItems="center" spacing={2} >
+<Typography variant="h3" color="primary" textAlign="center" margin="8px" >Sign Up</Typography>
+<Stack spacing={2} direction="row" >
       <StyledTextField label="first name" />
       <StyledTextField label="last name" />
       </Stack>
@@ -92,6 +96,7 @@ alert(error.message)
       <StyledTextField label="email" />
       <StyledTextField label="password"  type="password" />
       <StyledTextField label="age" type="number" />
+      <Button sx={{width : '100%'}} variant="outlined" >submit</Button>
  </Stack>
 </Stack>
    </Stack>  
