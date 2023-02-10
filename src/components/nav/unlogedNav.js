@@ -8,7 +8,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonIcon from '@mui/icons-material/Person';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import HomeIcon from '@mui/icons-material/Home';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import '../../app.css'
 
 
@@ -19,6 +19,7 @@ export const TopNav = ({setNav , Nav})=>{
 
 
 export const SideBar = ({Nav , setNav , logo : myLogo })=>{
+const componentName =  useLocation().pathname
 const navAnimate = useAnimation() ;
 
 useEffect(() => {
@@ -77,25 +78,25 @@ return <motion.div initial={{x: 0}} animate={navAnimate}  style={{position : 'ab
         <ListSubheader component="div" id="nested-list-subheader">
         </ListSubheader>
       }
-    >  <Link to="/"  style={{textDecoration : 'none'}} > <ListItemButton>
+    >  <Link to="/"  style={{textDecoration : 'none'}} > <ListItemButton sx={{borderBottom: componentName === "/" ? '2px solid black ' : 'none' , color:  componentName === "/" ? 'black' : 'inherit' }} >
         <ListItemIcon>
         <HomeIcon/>
        </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItemButton></Link>
-     <Link to="/login" style={{textDecoration : 'none'}} ><ListItemButton>
+     <Link to="/login" style={{textDecoration : 'none'}} ><ListItemButton sx={{borderBottom: componentName === "/login" ? '2px solid black ' : 'none' , color:  componentName === "/login" ? 'black' : 'inherit' }} >
         <ListItemIcon>
         <PersonIcon/>
        </ListItemIcon>
         <ListItemText primary="Login" />
       </ListItemButton></Link>
-<Link to="regester" style={{textDecoration : 'none'}}><ListItemButton>
+<Link to="/regester" style={{textDecoration : 'none'}}><ListItemButton sx={{borderBottom: componentName === "/regester" ? '2px solid black ' : 'none' , color:  componentName === "/regester" ? 'black' : 'inherit' }} >
         <ListItemIcon>
         <PersonAddIcon/>
         </ListItemIcon>
-        <ListItemText primary="Regester" />
+        <ListItemText  primary="Regester" />
       </ListItemButton></Link>
- <Link to="/about"  style={{textDecoration : 'none'}}  >          <ListItemButton>
+ <Link to="/about"  style={{textDecoration : 'none'}}  >          <ListItemButton sx={{borderBottom: componentName === "/about" ? '2px solid black ' : 'none' , color:  componentName === "/about" ? 'black' : 'inherit' }} >
         <ListItemIcon>
        <ReceiptIcon/>
       </ListItemIcon>
