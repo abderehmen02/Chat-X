@@ -22,7 +22,7 @@ history.push('/landing')
         <Stack spacing="40px" direction="column"  width='100vw' sx={{backgroundColor : 'secondary.dark' , alignItems:"center" , minHeight: '100vh'   }} onClick={()=>{setNav(false)}} >
 <TopNav setNav={setNav} Nav={Nav} />
 <SideBar Nav={Nav} setNav={setNav} logo={logo} />
-<Stack direction="row" sx={{ width : '95%' , justifyContent :'space-around' , alignItems: 'center' }}  >
+<Stack  spacing={{xs: '40px'}}  direction={{xs: 'column-reverse' , md : 'row'}} sx={{ width : '95%' , justifyContent :'space-around' , alignItems: 'center' }}  >
 <img height="300px"   src={HomeImage} ></img>
 <Stack spacing={5} alignItems="center" height='60vh' >
 <Stack alignItems="center" >

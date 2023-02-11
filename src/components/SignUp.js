@@ -1,13 +1,13 @@
 import React , {useState , useEffect} from 'react'
 import { auth  , db} from '../firebase'
-import { Modal } from '@material-ui/core'
 import * as firebase from 'firebase/app'
 import { motion } from 'framer-motion'
 import 'firebase/firestore'
 import '../stylesheets/welcome.css'
 import signUpImage  from '../Images/regesterImg.png'
-import { useHistory } from 'react-router-dom'
-import { Stack ,styled ,  Button, Typography, TextField } from '@mui/material'
+import { Link, useHistory } from 'react-router-dom'
+import { Stack ,styled  , Button, Typography, TextField, LinearProgress } from '@mui/material'
+import Modal from '@mui/material/Modal';
 import { SideBar, TopNav } from './nav/unlogedNav'
 
 
@@ -78,15 +78,30 @@ alert(error.message)
 }).catch(err => alert(err.message)
 )
 }
-    return (
+
+
+  // email && password && UserName && FirstName && LastName
+
+return (
    <Stack sx={{backgroundColor: 'secondary.dark' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
+    <Modal onClose={()=>{setVerefyModal(false)}} open={VerefyModal} sx={{display : 'flex' , alignItems : 'center' , justifyContent: 'center'}} >
+  <motion.div initial={{scale: 0.3}} animate={{scale: 1}} transition={{duration: 0.5}}  className='verifyComponent'>
+  <Stack spacing={4} >
+  <Typography textAlign="center" variant="h3" >Please Verify Your Acount</Typography>
+  <Stack direction="row" spacing={2} >
+  <Button variant="contained"  onClick={addAndVerify}> Verrity Email </Button>
+  <Button variant="outlined" onClick={add}> Not Now       </Button>
+</Stack>
+</Stack>
+</motion.div>
+</Modal>
 <TopNav Nav={Nav} setNav={setNav} />
 <SideBar Nav={Nav} setNav={setNav} />
 <Stack direction="row" width="90%"  alignItems="center" justifyContent="space-around" >
 <Stack alignItems="center" spacing={8}  >
   <Stack alignItems="center" spacing={1}  >
     <Typography sx={{fontSize : '24px'}} textAlign="center" color="#fff" >Already have an account ?</Typography>
-    <Button variant="standard" sx={{width:"100%"}} >Login</Button>
+<Link to="/login" style={{textDecoration : 'none' , width : '100%' }} > <Button variant="standard" sx={{width:"100%"}} >Login</Button></Link>
   </Stack>
   <img src={signUpImage}  ></img>
 </Stack>
@@ -99,8 +114,8 @@ alert(error.message)
       <StyledTextField label="user name" value={UserName} onChange={(e)=>setUserName(e.target.value)}  />
       <StyledTextField label="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
       <StyledTextField label="password"  type="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-      <StyledTextField label="age" type="number" value={age} onClick={(e)=>setAge(e.target.value)} />
-      <Button sx={{width : '100%'}} variant="outlined" >submit</Button>
+      <StyledTextField label="age" type="number" value={age} onChange={(e)=>setAge(e.target.value)} />
+      <Button sx={{width : '100%'}} variant="outlined" onClick={()=>{  if(email && password && UserName && FirstName &&   LastName ){ setVerefyModal(true)} else{alert('please fill out the required information')} }} >submit</Button>
  </Stack>
 </Stack>
    </Stack>  
@@ -116,20 +131,9 @@ alert(error.message)
 // <div><label>Email:</label><input onChange={e =>{setEmail(e.target.value)}} value={email} ></input></div>
 // </motion.div>
 // <div className='SignUpButtons'>
-// <div>  <Button color='primary' variant='contained' onClick={()=>{ if(
-//   // email && password && UserName && FirstName && 
-//   LastName  ){ setVerefyModal(true)} else{alert('please fill out the required information')} }} >Next</Button></div>
+{/* <div>  <Button color='primary' variant='contained'  >Next</Button></div> */}
 // <div>  <Button color='primary' variant='contained' onClick={()=>{history.push('/')}}>Returnn</Button></div>
 // </div>
-//   <Modal onClose={()=>{setVerefyModal(false)}} open={VerefyModal} >
-//   <motion.div initial={{scale: 0.3}} animate={{scale: 1}} transition={{duration: 0.5}}  className='verifyComponent'>
-// <h1 className='VeriffyTittle' >please verity your account</h1>
-// <div className='verifyBtns'>
-//   <Button color='primary' variant='outlined' onClick={addAndVerify}> Verrity Email </Button>
-//   <Button color='secondry' variant='contained' onClick={add}> Not Now       </Button>
-// </div>
-// </motion.div>
-//   </Modal>
 
 //    </motion.div>
 
