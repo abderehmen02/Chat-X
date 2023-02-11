@@ -10,6 +10,13 @@ import { Data } from '../App'
 import Avatar from '@material-ui/core/Avatar'
 import '../stylesheets/landing.css'
 import {Stack , Button,Typography , Box} from '@mui/material'
+import Nav from './nav/loggedNav'
+
+
+
+
+
+
 
 
 
@@ -55,10 +62,13 @@ if(Loading){
   }
 if(emailVerrified){
 Verifymessage = ()=>{
-    return (<Typography> your email is not verrified yet 
+    return (
+<Stack padding={2} spacing={2} direction="row" alignItems="center" bgcolor="secondary.light" margin="8px" borderRadius={1} >    <Typography> your email is not verrified yet 
     please verrify your Email  
-    <Button  variant='Standard' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
-    </Typography> )
+    </Typography>
+        <Button  variant='standard' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
+
+    </Stack> )
 }
 }
 // functions
@@ -87,6 +97,7 @@ const VerifyEmail = ()=>{
 }
     return (
         <Stack  sx={{backgroundColor : 'secondary.main' , width : '100vw' , minHeight: '100vh' , alignItems: 'center'  }} > 
+        <Nav/>
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
       </Modal>
