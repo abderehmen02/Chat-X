@@ -2,11 +2,20 @@ import React ,{useEffect , useContext , useState} from 'react'
 import '../stylesheets/posts.css'
 import * as firebase from 'firebase/app'
 import { Data } from '../App'
+import { Stack } from '@mui/material'
 import Post from './post'
 import { db, FirebaseStorage , auth } from '../firebase'
+import { Typography } from '@material-ui/core'
 let today = new Date();
 let yesterday = new Date();
 yesterday.setDate(today.getDate() - 1)
+
+
+
+const NoPosts =()=>{
+    return <Stack alignItems="center" width="50vw" padding={2} bgcolor="white.light" ><Typography color="warning" textAlign="center" width="100%" >  You have no posts currently </Typography></Stack>
+}
+
 function posts() {
     const data = useContext(Data).user
     const userdbdata = useContext(Data).userdbdata
@@ -36,15 +45,15 @@ db.collection('users').doc(item).collection('posts').where('timestamp' , '>' , f
 
     return (
 
-        <div className='postsComponent'>
-        <h2 className='tittlePosts' > Recent Posts </h2>
+        <Stack>
+    {!Posts.length && <NoPosts/> }
     {Posts.map(item =>{
         return <div className='SinglePostDiv' > <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
-ProfilePic={item.profilePic} userName={item.userName} 
+ProfilePic={item.profilePic}  
 Timestamp={item.timestamp}
 /> </div>
     } )}      
-        </div>
+        </Stack>
     )
 }
 

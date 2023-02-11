@@ -30,7 +30,7 @@ const StyledTextField =  styled(TextField)(({theme})=>({
 
 function Nav() {
   return (
-    <Stack direction="row" width="100vw" margin={2} justifyContent="space-around">
+    <Stack  direction="row" width="100vw" margin={2} justifyContent="space-around">
  <StyledTextField
         helperText="search for any person"
         id="input-with-icon-textfield"
@@ -48,7 +48,7 @@ function Nav() {
         variant="standard"
       />
 
-<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar></Avatar>      <Typography variant='h3' color="white.light" >Chat WX </Typography>
+<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar></Avatar>      <Typography variant='h4' color="white.light" >Chat WX </Typography>
 </Stack>
 <Button variant="outlined" >Log out</Button>
     </Stack>
