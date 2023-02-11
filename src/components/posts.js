@@ -13,7 +13,7 @@ yesterday.setDate(today.getDate() - 1)
 
 
 const NoPosts =()=>{
-    return <Stack alignItems="center" width="50vw" padding={2} bgcolor="white.light" ><Typography color="warning" textAlign="center" width="100%" >  You have no posts currently </Typography></Stack>
+    return <Stack alignItems="center" width="50vw" padding={2} bgcolor="white.light" ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
 }
 
 function posts() {
@@ -24,10 +24,6 @@ function posts() {
     const [LoadingFollowing, setLoadingFollowing] = useState(true)
     const [Loading, setLoading] = useState(true)
     const [FollowingsData, setFollowingsData] = useState(null)
-useEffect(() => {
-  
-    
-}, [])
 
 useEffect(() => {
     if(userdbdata){

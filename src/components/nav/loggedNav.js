@@ -1,8 +1,9 @@
 import { Stack , styled , Typography , Avatar , TextField , Button , InputAdornment  } from '@mui/material'
-import React from 'react'
+import React  , {useContext}from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-
+import { Data } from '../../App';
+import { useHistory } from 'react-router-dom';
 
 
 const StyledTextField =  styled(TextField)(({theme})=>({
@@ -29,8 +30,18 @@ const StyledTextField =  styled(TextField)(({theme})=>({
 
 
 function Nav() {
+    const history  = useHistory()
+    const userData = useContext(Data)
+    const userAuthData = userData.user
+
+const showProfile=()=>{
+    history.push(`/acount/${userAuthData.uid}`)
+}
+
+
+
   return (
-    <Stack  direction="row" width="100vw" margin={2} justifyContent="space-around">
+  <Stack alignItems="center"  direction="row" width="100vw" margin={2} justifyContent="space-around">
  <StyledTextField
         helperText="search for any person"
         id="input-with-icon-textfield"
@@ -48,9 +59,9 @@ function Nav() {
         variant="standard"
       />
 
-<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar></Avatar>      <Typography variant='h4' color="white.light" >Chat WX </Typography>
+<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar onClick={showProfile} ></Avatar>      <Typography variant='h4' color="white.light" >Chat WX </Typography>
 </Stack>
-<Button variant="outlined" >Log out</Button>
+<Button variant="contained" sx={{height : 'inherit'}} >Log out</Button>
     </Stack>
 
 

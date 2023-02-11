@@ -6,12 +6,14 @@ import { Data } from '../App'
 import { motion , AnimatePresence } from "framer-motion"
 import {Animated} from "react-animated-css";
 import UploadProfileImg from './uploadProfileImage'
-import Avatar from '@material-ui/core/Avatar'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ControlPointDuplicateIcon from '@material-ui/icons/ControlPointDuplicate';;
-import { Checkbox  , FormControlLabel  , Dialog , makeStyles ,  Modal , Button } from '@material-ui/core';
+import { Checkbox  , FormControlLabel  , Dialog , makeStyles ,  } from '@material-ui/core';
 import Post from './post'
 import '../stylesheets/profile.css'
+import { Stack  , Button , Avatar , Modal , Tooltip , Typography } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add';
+
 const myVarients = {
     
     hidden: {
@@ -43,7 +45,7 @@ y: 0,
         y: '-50vh'
     },
     outsideRight : {
-        scale: 0.2 , 
+scale: 0.2 , 
 x: '-50vw'
     } ,
     drag: {
@@ -258,39 +260,57 @@ followerdata.map(user =>{
 )}
 /// this is my profile
  if(params.id === data.uid){
-     return   <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile mine gradient-border "> 
-     <div className='header' >
-     <div className='identity'>
-       <motion.div variants={myVarients} className='UserName' whileHover='zoomIn' initial='outside' animate='zoom' >{userdbdata.userName}</motion.div>
-<motion.div whileHover='zoomIn' variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div> </div>
-<div className='buttonsPfofile' >
-<Button color="primary" onClick={()=>{setProfileImgModal(true)}} className={classes.btn  }  variant='outlined' > Upload Profile Image </Button>
-<Button color='secondary'  onClick={()=>{setFollowerModal(true)}} className={classes.btn } variant='outlined' > Followers </Button>
-<Button color='secondary'  onClick={()=>{setFollowingModal(true)}}  className={classes.btn } variant='outlined' >Followings</Button>  
-
- </div> 
-<Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
-   <FollowersComponent/>      
- </Dialog>
-<Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
-    <FollowingComponent/>
-</Dialog>
-<Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
-<UploadProfileImg/>
-</Dialog>
-
- </div> 
-            <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
- {Posts.map(item =>{
-        return <div className='postInProfile'>
-         <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
-ProfilePic={item.profilePic} userName={item.userName} 
-Timestamp={item.timestamp} /></div>
-    } )}      
-
-            </motion.div>
-        </motion.div>
+     return  <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
+        <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
+        <Tooltip title="upload image"  >
+        <Avatar sx={{boxShadow : '2px 2px 4px black' , width : '100px' , height : '100px'}} />
+        </Tooltip>     <Stack spacing={2} > 
+            <Typography textAlign="center" variant="h3" color="white.light" >User Name</Typography>
+            <Stack direction="row" height="fitContent"  spacing="16px" >
+                <Button variant="contained"  > followings </Button>
+                <Button variant="outlined" > followers </Button>
+            </Stack>
+        </Stack>
+            
+        </Stack>
+     </Stack>
  }
+
+
+//  <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile mine gradient-border "> 
+//      <div className='header' >
+//      <div className='identity'>
+//        <motion.div variants={myVarients} className='UserName' whileHover='zoomIn' initial='outside' animate='zoom' >{userdbdata.userName}</motion.div>
+// <motion.div whileHover='zoomIn' variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div> </div>
+// <div className='buttonsPfofile' >
+// <Button color="primary" onClick={()=>{setProfileImgModal(true)}} className={classes.btn  }  variant='outlined' > Upload Profile Image </Button>
+// <Button color='secondary'  onClick={()=>{setFollowerModal(true)}} className={classes.btn } variant='outlined' > Followers </Button>
+// <Button color='secondary'  onClick={()=>{setFollowingModal(true)}}  className={classes.btn } variant='outlined' >Followings</Button>  
+
+//  </div> 
+// <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+//    <FollowersComponent/>      
+//  </Dialog>
+// <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+//     <FollowingComponent/>
+// </Dialog>
+// <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
+// <UploadProfileImg/>
+// </Dialog>
+
+//  </div> 
+//             <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
+//  {Posts.map(item =>{
+//         return <div className='postInProfile'>
+//          <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+// ProfilePic={item.profilePic} 
+// Timestamp={item.timestamp} /></div>
+//     } )}      
+
+//             </motion.div>
+//         </motion.div>
+
+
 // this is another one profile
     return (
      <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile another  gradient-borderAutherProfile ">
@@ -327,7 +347,7 @@ checkedIcon={<CheckCircleIcon className={classes.checked} />}
  {Posts.map(item =>{
         return <div className='postInProfile'>
          <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
-ProfilePic={item.profilePic} userName={item.userName} 
+ProfilePic={item.profilePic} 
 Timestamp={item.timestamp}/> </div>
     } )}    
             </motion.div>
