@@ -83,7 +83,7 @@ alert(error.message)
   // email && password && UserName && FirstName && LastName
 
 return (
-   <Stack sx={{backgroundColor: 'secondary.dark' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
+   <Stack sx={{ backgroundColor: 'secondary.dark' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
     <Modal onClose={()=>{setVerefyModal(false)}} open={VerefyModal} sx={{display : 'flex' , alignItems : 'center' , justifyContent: 'center'}} >
   <motion.div initial={{scale: 0.3}} animate={{scale: 1}} transition={{duration: 0.5}}  className='verifyComponent'>
   <Stack spacing={4} >
