@@ -9,19 +9,6 @@ import signUpImage  from '../Images/regesterImg.png'
 import { useHistory } from 'react-router-dom'
 import { Stack ,styled ,  Button, Typography, TextField } from '@mui/material'
 import { SideBar, TopNav } from './nav/unlogedNav'
-function SignUp() {
-
-//hooks
-const [Nav, setNav] = useState(false)
-const [UserName, setUserName] = useState('')
-const [FirstName, setFirstName] = useState('')
-const [LastName, setLastName] = useState('')
-const [password, setPassword] = useState('')
-const [age, setAge] = useState(new Date())
-const [email, setEmail] = useState('')
-const [VerefyModal, setVerefyModal] = useState(false)
-const history = useHistory()
-
 
 
 const StyledTextField =  styled(TextField)(({theme})=>({
@@ -43,6 +30,23 @@ const StyledTextField =  styled(TextField)(({theme})=>({
     },
   
 }));
+
+
+
+function SignUp() {
+
+//hooks
+const [Nav, setNav] = useState(false)
+const [UserName, setUserName] = useState('')
+const [FirstName, setFirstName] = useState('')
+const [LastName, setLastName] = useState('')
+const [password, setPassword] = useState('')
+const [age, setAge] = useState(new Date())
+const [email, setEmail] = useState('')
+const [VerefyModal, setVerefyModal] = useState(false)
+const history = useHistory()
+
+
 
 
 
@@ -89,13 +93,13 @@ alert(error.message)
 <Stack alignItems="center" spacing={2} >
 <Typography sx={{fontSize  :'24px'}} color="primary" textAlign="center" margin="8px" >Sign Up</Typography>
 <Stack spacing={2} direction="row" >
-      <StyledTextField label="first name" />
-      <StyledTextField label="last name" />
+      <StyledTextField type="text" label="first name" value={FirstName} onChange={(e)=>setFirstName(e.target.value)} />
+      <StyledTextField label="last name" value={LastName} onChange={(e)=>setLastName(e.target.value)} />
       </Stack>
-      <StyledTextField label="user name" />
-      <StyledTextField label="email" />
-      <StyledTextField label="password"  type="password" />
-      <StyledTextField label="age" type="number" />
+      <StyledTextField label="user name" value={UserName} onChange={(e)=>setUserName(e.target.value)}  />
+      <StyledTextField label="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+      <StyledTextField label="password"  type="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+      <StyledTextField label="age" type="number" value={age} onClick={(e)=>setAge(e.target.value)} />
       <Button sx={{width : '100%'}} variant="outlined" >submit</Button>
  </Stack>
 </Stack>
