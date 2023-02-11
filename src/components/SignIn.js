@@ -5,7 +5,7 @@ import {  BrowserRouter as Router,Link , useParams,  Route, Switch} from 'react-
 import { useHistory } from 'react-router-dom';
 import '../stylesheets/SignIn.css';
 import SignInImage from '../Images/SignInImg.png'
-import { FormControl, styled , Button ,Stack, TextField ,  Typography } from '@mui/material';
+import { FormControl, styled , Button ,Stack, TextField , Box ,  Typography } from '@mui/material';
 import {TopNav , SideBar} from './nav/unlogedNav'
 
 const StyledTextField =  styled(TextField)(({theme})=>({
@@ -48,8 +48,8 @@ const history = useHistory()
         <Stack  sx={{ alignItems: 'center' , backgroundColor: 'secondary.dark' , width: '100vw' , minHeight: '100vh' }} onClick={()=>{setNav(false)}} spacing="64px" >
         <TopNav Nav={Nav} setNav={setNav} ></TopNav>
         <SideBar Nav={Nav} setNav={setNav} />
-        <Stack direction="row" width="90%"  justifyContent="space-around" >
-        <Stack spacing={5} width="40vw"  >
+        <Stack direction={{xs: "column" , md: 'row'}} spacing={{xs: '40px'}} width="90%"  justifyContent="space-around" >
+        <Stack spacing={5} width={{ xs: '100%'  , md: '40vw'}}  >
             <Typography textAlign="center" color="primary" variant="h2" >Sign In</Typography>
             <FormControl>
             <Stack spacing={2} >
@@ -63,7 +63,9 @@ const history = useHistory()
                 <Link style={{textDecoration: 'none' , color: 'inherit'  , width:'100%'  }} to="/regester" ><Button variant="standard" sx={{width : '100%'}} > Regester </Button></Link>
             </Stack>
         </Stack>
+        <Box display={{xs: 'none' , md: 'block'}} >
         <img src={SignInImage}  ></img>
+        </Box>
         </Stack>
         </Stack>
     )
