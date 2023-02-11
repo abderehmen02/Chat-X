@@ -13,7 +13,7 @@ import '../../app.css'
 
 
 export const TopNav = ({setNav , Nav})=>{
-    return <Stack  direction="row" width="100vw" justifyContent="space-around"  alignItems="center"  ><Typography  color={(theme)=>theme.palette.white.light}  onClick={(e)=>{setNav(true) ; e.stopPropagation() }}  sx={{cursor: 'pointer' , visibility: Nav? 'hidden' : 'visible' }} >  <FormatListBulletedIcon color='#fff' /></Typography> <Typography variant='h3'  color={(theme)=>theme.palette.white.light} > Chat WX  an app  build for communication </Typography> <img style={{width : '80px' , height : '80px'}} src={logo} ></img> </Stack>
+    return <Stack  direction="row" width="100vw" justifyContent="space-around"  alignItems="center"  ><Typography  color={(theme)=>theme.palette.white.light}  onClick={(e)=>{setNav(true) ; e.stopPropagation() }}  sx={{cursor: 'pointer' , visibility: Nav? 'hidden' : 'visible' }} >  <FormatListBulletedIcon color='#fff' /></Typography> <Typography display={{xs: 'none' , md : 'block'}} variant='h3'  color={(theme)=>theme.palette.white.light} > Chat WX  an app  build for communication </Typography> <Typography display={{xs : 'block' , md  : 'none'}} color="#fff" variant="h3"  >ChatWX</Typography> <img style={{width : '80px' , height : '80px'}} src={logo} ></img> </Stack>
 }
 
 
