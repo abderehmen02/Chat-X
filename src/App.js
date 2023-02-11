@@ -64,9 +64,9 @@ if(!user){
   </ThemeProvider>
 }
   return (
+    <ThemeProvider theme={theme} >
     <Data.Provider value={{user ,  userdb , userdbdata } }>
      <Router> 
-<div className="app">
   <Switch>
  <Route exact path='/acount/:id'><Acount/></Route>
  <Route exact path='/posts'> 
@@ -74,8 +74,8 @@ if(!user){
   <Route exact path='/search'> <Search/></Route>
    <Route   path='/'><Landing/></Route>
  </Switch>
- </div>
 </Router></Data.Provider>
+</ThemeProvider>
   )
 }
 

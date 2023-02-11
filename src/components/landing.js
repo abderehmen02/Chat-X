@@ -1,5 +1,5 @@
 import React , {useEffect  , useContext , useState}from 'react'
-import { Button , Modal} from '@material-ui/core'
+import { Modal, TextField} from '@material-ui/core'
 import {auth} from '../firebase'
 import { motion  , AnimatePresence  } from 'framer-motion'
 import { useHistory } from 'react-router-dom'
@@ -9,6 +9,10 @@ import Posts from './posts'
 import { Data } from '../App'
 import Avatar from '@material-ui/core/Avatar'
 import '../stylesheets/landing.css'
+import {Stack , Button,Typography , Box} from '@mui/material'
+
+
+
 function Landing() {
     // hooks 
 const [User, setUser] = useState(null)
@@ -51,11 +55,10 @@ if(Loading){
   }
 if(emailVerrified){
 Verifymessage = ()=>{
-    return (<div className='verifyMessage' >
-    <p> your email is not verrified yet 
-    please verrify your Email!!</p> 
-    <Button color='secondary' variant='containd' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
-    </div> )
+    return (<Typography> your email is not verrified yet 
+    please verrify your Email  
+    <Button  variant='Standard' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
+    </Typography> )
 }
 }
 // functions
@@ -77,33 +80,37 @@ x: [9 , -9 ,7,-7,5,-5 ,0]
     }
 }
 const VerifyEmail = ()=>{
-    return <motion.div initial={{scale: 0.2}} animate={{scale: 1 , transform: {duration: 1} }} className='emailVerefication' >
+    return    <motion.div initial={{scale: 0.2}} animate={{scale: 1 , transform: {duration: 1} }} className='emailVerefication' >
     <h2 className='tittle' > Email Verefication </h2>
          <Button onClick={verrify} color='secondary' variant='outlined' > send a link </Button>
     </motion.div>
 }
     return (
-        <motion.div variants={myvarients} initial='hidden' animate='visible' className="landing">
+        <Stack  sx={{backgroundColor : 'secondary.main' , width : '100vw' , minHeight: '100vh' , alignItems: 'center'  }} > 
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
       </Modal>
+      <Stack borderRadius={1} width="40vw" alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
+        <TextField fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
+        <Stack width='100%' justifyContent="space-between" direction="row" spacing="32px" > <Button variant="outlined"  > Upload File </Button> <Button variant="contained" > Submit </Button> </Stack>
+      </Stack>
         <Verifymessage className="verify"/>
-        <div className='PageHeader'>
-      
-<motion.div initial={{x: '-100vw'}} animate={{x: 0 , transition: {  duration: 0.5 } }} whileHover={{scale: 1.1}} className='icons' >
-<motion.div whileHover={{scale: 1.3}} className='searchIcon' ><SearchIcon onClick={()=>{history.push('/search')}}/></motion.div>
-<motion.div whileHover={{scale: 1.4}} className='ProfileAvatar' >
-<Avatar alt="Remy Sharp" src={userdb && userdb.data().ProfilePic} onClick={showProfile} /></motion.div>
-<Button onClick={logOut} variant='contained' color='secondary' >Log Out</Button>
-</motion.div>
- <motion.div initial={{y: '200vh'}} animate={{y:0 , transition:{duration: 0.5} }} >
- <UploadImage className="uploadmsg"/> </motion.div>
-</div>
 <motion.div className='posts' initial={{x: '100vw'}} animate={{x: 0 , transition: {duration: 0.5}}} >
 <Posts/>
 </motion.div>
-        </motion.div>
+        </Stack>
     )
+//             <div className='PageHeader'>
+// <motion.div initial={{x: '-100vw'}} animate={{x: 0 , transition: {  duration: 0.5 } }} whileHover={{scale: 1.1}} className='icons' >
+// <motion.div whileHover={{scale: 1.3}} className='searchIcon' ><SearchIcon onClick={()=>{history.push('/search')}}/></motion.div>
+// <motion.div whileHover={{scale: 1.4}} className='ProfileAvatar' >
+// <Avatar alt="Remy Sharp" src={userdb && userdb.data().ProfilePic} onClick={showProfile} /></motion.div>
+// <Button onClick={logOut} variant='contained' color='secondary' >Log Out</Button>
+// </motion.div>
+//  <motion.div initial={{y: '200vh'}} animate={{y:0 , transition:{duration: 0.5} }} >
+//  <UploadImage className="uploadmsg"/> </motion.div>
+// </div>
+
 }
 
 export default Landing
