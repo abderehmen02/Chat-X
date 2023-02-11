@@ -26,11 +26,11 @@ history.push('/landing')
 <img height="300px"   src={HomeImage} ></img>
 <Stack spacing={5} alignItems="center" height='60vh' >
 <Stack alignItems="center" >
-<Typography variant='h2' textAlign='center'  color="primary" >Welcome to CHAT WX</Typography>
+<Typography  variant='h2' textAlign='center'  color="primary" >Welcome to CHAT WX</Typography>
 <Typography color="#fff" >Where all comunities come together</Typography>
 </Stack>
-<Stack direction='column' gap="4px" height="100%"   justifyContent="space-around" >
-<Stack direction="row" spacing={2} ><Link to="/login" style={{textDecoration : 'none'}} > <Button variant='contained'  >Log In</Button></Link><Link to="/regester" style={{textDecoration : 'none'}}><Button variant='outlined'   >Regester</Button></Link> </Stack>
+<Stack direction='column' gap="4px" height="100%"  width={{xs: '80vw' , md : "inherit"}}   justifyContent="space-around" >
+<Stack direction={{xs: 'column' , md : 'row'}} spacing={2} width="100%" ><Link to="/login" style={{textDecoration : 'none' , width: "100%" }} > <Button sx={{width : '100%'}} variant='contained'  >Log In</Button></Link><Link to="/regester" style={{textDecoration : 'none'}}><Button sx={{width : '100%'}} variant='outlined'   >Regester</Button></Link> </Stack>
 <Button width="100%" variant="standard" onClick={signInAsAGuest} >Sign In As A Guest</Button>
 <Button variant="contained" width="100%" ><Link to="/about" style={{textDecoration : 'none' }} >About This Project</Link></Button>
           {/* <div className='buttons'  >
