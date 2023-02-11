@@ -97,7 +97,7 @@ return (
 </Modal>
 <TopNav Nav={Nav} setNav={setNav} />
 <SideBar Nav={Nav} setNav={setNav} />
-<Stack direction="row" width="90%"  alignItems="center" justifyContent="space-around" >
+<Stack direction={{xs: 'column-reverse' , md: 'row'}} spacing={{xs: '40px'}} width="90%"  alignItems="center" justifyContent="space-around" >
 <Stack alignItems="center" spacing={8}  >
   <Stack alignItems="center" spacing={1}  >
     <Typography sx={{fontSize : '24px'}} textAlign="center" color="#fff" >Already have an account ?</Typography>
