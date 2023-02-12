@@ -251,22 +251,32 @@ if(LoadingFollowings){
 const FollowersComponent = ()=>{
 
 if(Followers.length === 0){
-return <h4 className='noFollow' > no follower</h4>
+   return <Typography variant="h4" > No followings ! </Typography>
 }
-return (
-<motion.div  variants={myVarients} className='followingsComponent' initial='ComponentSmall' animate='DisplayComponent'   className='followersComponent' >
-<h2 className='title' >Followers</h2>
+ return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
+         <Typography  variant="h2" margin={1}   fontWeight="bold" textAlign="center" > Followers  </Typography>
+        <Stack spacing={2} margin={1} width="30vw"  >{
+followerdata.map(item =>{
+    return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
+})}
+        </Stack>
+    </Stack>}
+
+{/* <motion.div  variants={myVarients} className='followingsComponent' initial='ComponentSmall' animate='DisplayComponent'   className='followersComponent' >
 <div className='followers'>
 {
 followerdata.map(user =>{
-    return <div className='follower' onClick={()=>{   history.push(`/acount/${user.id}`)  ; window.location.reload() ; }}> {user.data.FirstName}  {user.data.lastName}</div>
+    return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
 })
-}</div>
-</motion.div>
-)}
+}</Stack>
+</motion.div> */}
+
 /// this is my profile
  if(params.id === data.uid){
      return  <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
+      <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
+      <UploadProfileImg setProfileImageModel={setProfileImgModal} />
+      </Dialog>
          <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
          <FollowersComponent/>      
          </Dialog>
@@ -276,25 +286,15 @@ followerdata.map(user =>{
         <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
         <Stack spacing="2px"   >
         <Tooltip title="upload image"  >
-        <Avatar src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black' , width : '100px' , height : '100px'}} >
+        <Avatar src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black' , width : '100px' , height : '100px'}}   onClick={()=>setProfileImgModal(true)}>
         </Avatar >
         </Tooltip>
-                <Typography textAlign="center" variant="h4" color="white.light" >{userdbdata.userName}</Typography>
   </Stack>     <Stack spacing={2} > 
+                           <Typography textAlign="center" sx={{textTransform  : 'capitalize'}} variant="h4" color="white.light"   >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </Typography>
             <Stack direction="row" height="fitContent"  spacing="16px" >
                 <Button variant="contained" onClick={()=>{setFollowingModal(true)}}  > followings </Button>
                 <Button variant="outlined"  onClick={()=>{setFollowerModal(true)}}  > followers </Button>
             </Stack>
-                     <Button
-  variant="standard"
-  component="label"
->
-  Upload Profile Photo
-  <input
-    type="file"
-    hidden
-  />
-</Button>
         </Stack>
         </Stack>
           <Stack spacing={2} >
@@ -335,9 +335,9 @@ followerdata.map(user =>{
 {/* <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
     <FollowingComponent/>
 </Dialog> */}
-// <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
-// <UploadProfileImg/>
-// </Dialog>
+{/* <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
+<UploadProfileImg/>
+</Dialog> */}
 
 //  </div> 
 //             <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >

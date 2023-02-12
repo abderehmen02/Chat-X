@@ -1,5 +1,4 @@
 import React , {useState , useContext } from 'react'
-import { Button } from '@material-ui/core'
 import { motion } from 'framer-motion'
 import shortid from 'shortid'
 import { db, FirebaseStorage , auth } from '../firebase'
@@ -7,6 +6,7 @@ import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import '../stylesheets/posts.css'
 import { Data } from '../App'
+import { Stack , Button } from '@mui/material'
 function UploadImage() {
     //hooks
 const [Caption, setCaption] = useState('')
@@ -56,14 +56,14 @@ profilePic: userdbdata.ProfilePic
 // functios excuting
 
 
-return(<motion.div  className='uploadImageComponent'>
+return(<Stack>
 <div className='uploadInfo' >
 <Button style={{marginTop: 10}} color='secondary' variant='contained'  onClick={uploadFile} > Upload </Button></div>
 <div className='postInfo'>
 <input className='fileInput' type='file' onChange={handleFiles}></input>
 <input className='captionInput' placeholder='enter your caption' value={Caption} onChange={(event)=>{setCaption(event.target.value)}} ></input>
 </div>
-</motion.div>
+</Stack>
 )  
 }
 
