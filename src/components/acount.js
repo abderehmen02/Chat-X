@@ -185,6 +185,13 @@ if(PostLoading){
     return <h1>Loading...</h1>
 }
 //functions declarations
+
+const NoPosts =()=>{
+    return <Stack alignItems="center" width="50vw" padding={2} bgcolor="white.light" ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
+}
+
+
+
 const AddIconChanged =()=>{
 
     setAddIcon(false) 
@@ -227,20 +234,19 @@ db.collection('users').doc(data.uid).update({
 const FollowingComponent = ()=>{
 
 if(Followings.length === 0){
-    return <h5 className='noFollow' >No following</h5>
+    return <Typography variant="h4" > No followings ! </Typography>
 }
 if(LoadingFollowings){
-    return <h4> Loading...  </h4>
+    return <Typography variaant="h4" > Loading...  </Typography>
 }
-   return  <motion.div variants={myVarients} className='followingsComponent' initial='ComponentSmall' animate='DisplayComponent'  >
-        <h2 className='title' >Followings</h2>
-        <div className='following' >
+   return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
+         <Typography  variant="h2" margin={1}   fontWeight="bold" textAlign="center" > Followings  </Typography>
+        <Stack spacing={2} margin={1} width="30vw"  >
         {followingdata.map((item)=>{
-
-            return <div onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </div>
+           return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
         })}
-        </div>
-    </motion.div>
+        </Stack>
+    </Stack>
 }
 const FollowersComponent = ()=>{
 
@@ -261,18 +267,54 @@ followerdata.map(user =>{
 /// this is my profile
  if(params.id === data.uid){
      return  <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
+         <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+         <FollowersComponent/>      
+         </Dialog>
+         <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+         <FollowingComponent/>
+         </Dialog>
         <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
+        <Stack spacing="2px"   >
         <Tooltip title="upload image"  >
-        <Avatar sx={{boxShadow : '2px 2px 4px black' , width : '100px' , height : '100px'}} />
-        </Tooltip>     <Stack spacing={2} > 
-            <Typography textAlign="center" variant="h3" color="white.light" >User Name</Typography>
+        <Avatar src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black' , width : '100px' , height : '100px'}} >
+        </Avatar >
+        </Tooltip>
+                <Typography textAlign="center" variant="h4" color="white.light" >{userdbdata.userName}</Typography>
+  </Stack>     <Stack spacing={2} > 
             <Stack direction="row" height="fitContent"  spacing="16px" >
-                <Button variant="contained"  > followings </Button>
-                <Button variant="outlined" > followers </Button>
+                <Button variant="contained" onClick={()=>{setFollowingModal(true)}}  > followings </Button>
+                <Button variant="outlined"  onClick={()=>{setFollowerModal(true)}}  > followers </Button>
             </Stack>
+                     <Button
+  variant="standard"
+  component="label"
+>
+  Upload Profile Photo
+  <input
+    type="file"
+    hidden
+  />
+</Button>
         </Stack>
-            
         </Stack>
+          <Stack spacing={2} >
+            {!Posts.length && <NoPosts/>  }
+        </Stack>
+                    <Stack width='50vw'>
+                  {Posts.map(item =>{
+
+
+
+/// person profile 
+
+
+
+         return <div className='postInProfile'>
+          <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+ ProfilePic={item.profilePic} 
+ Timestamp={item.timestamp} /></div>
+     } )}
+            </Stack>
      </Stack>
  }
 
@@ -286,14 +328,13 @@ followerdata.map(user =>{
 // <Button color="primary" onClick={()=>{setProfileImgModal(true)}} className={classes.btn  }  variant='outlined' > Upload Profile Image </Button>
 // <Button color='secondary'  onClick={()=>{setFollowerModal(true)}} className={classes.btn } variant='outlined' > Followers </Button>
 // <Button color='secondary'  onClick={()=>{setFollowingModal(true)}}  className={classes.btn } variant='outlined' >Followings</Button>  
-
 //  </div> 
-// <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
-//    <FollowersComponent/>      
-//  </Dialog>
-// <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
-//     <FollowingComponent/>
-// </Dialog>
+{/* <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+   <FollowersComponent/>      
+ </Dialog> */}
+{/* <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+    <FollowingComponent/>
+</Dialog> */}
 // <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
 // <UploadProfileImg/>
 // </Dialog>

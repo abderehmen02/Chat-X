@@ -164,7 +164,10 @@ theme.typography.h3 = {
     fontSize : '24px' ,
   fontFamily: 'Noto Sans , sans-serif' ,
     }
-
+theme.typography.h4 = {
+  fontSize : '20px' ,
+  fontFamily : 'sans-serif'
+}
 theme.components.MuiButton.variants = [
         {
           props: { variant: 'contained' },
