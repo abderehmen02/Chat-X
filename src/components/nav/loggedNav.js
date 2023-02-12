@@ -39,7 +39,6 @@ function Nav() {
 
 const showProfile=()=>{
     history.push(`/acount/${userAuthData.uid}`)
-    history.go(`/acount/${userAuthData.uid}`)
 }
 
 
