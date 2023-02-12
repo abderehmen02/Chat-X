@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 
 const StyledTextField =  styled(TextField)(({theme})=>({
  '& label': {
-    color: '#fff' ,
     textShadow : 'none'
   },
    '& label.Mui-focused': {
@@ -32,7 +31,11 @@ const StyledTextField =  styled(TextField)(({theme})=>({
 function Nav() {
     const history  = useHistory()
     const userData = useContext(Data)
+    const userdbData = userData.userdbdata
     const userAuthData = userData.user
+   const userdb = userData.userdb
+    console.log(userdbData);
+    console.log(userData);
 
 const showProfile=()=>{
     history.push(`/acount/${userAuthData.uid}`)
@@ -59,12 +62,10 @@ const showProfile=()=>{
         variant="standard"
       />
 
-<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar onClick={showProfile} ></Avatar>      <Typography variant='h4' color="white.light" >Chat WX </Typography>
+<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar onClick={showProfile} src={userdb && userdb.data().ProfilePic} ></Avatar>      <Typography variant='h5' color="white.light" >{userdbData.userName}</Typography>
 </Stack>
 <Button variant="contained" sx={{height : 'inherit'}} >Log out</Button>
     </Stack>
-
-
   )
 }
 
