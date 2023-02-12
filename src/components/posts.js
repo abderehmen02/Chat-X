@@ -13,7 +13,7 @@ yesterday.setDate(today.getDate() - 1)
 
 
 const NoPosts =()=>{
-    return <Stack alignItems="center" width="50vw" padding={2} bgcolor="white.light" ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
+    return <Stack alignItems="center" width="50vw" padding={4} bgcolor="white.light" ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
 }
 
 function posts() {
@@ -41,7 +41,7 @@ db.collection('users').doc(item).collection('posts').where('timestamp' , '>' , f
 
     return (
 
-        <Stack>
+        <Stack  >
     {!Posts.length && <NoPosts/> }
     {Posts.map(item =>{
         return <div className='SinglePostDiv' > <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}

@@ -181,6 +181,15 @@ return ()=>{
 }
     
 }, [Followers , Followings])
+
+
+
+
+
+
+
+
+
 if(PostLoading){
     return <h1>Loading...</h1>
 }

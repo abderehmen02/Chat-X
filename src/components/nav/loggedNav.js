@@ -31,14 +31,15 @@ const StyledTextField =  styled(TextField)(({theme})=>({
 function Nav() {
     const history  = useHistory()
     const userData = useContext(Data)
-    const userdbData = userData.userdbdata
-    const userAuthData = userData.user
-   const userdb = userData.userdb
+    const userdbData = userData?.userdbdata
+    const userAuthData = userData?.user
+   const userdb = userData?.userdb
     console.log(userdbData);
     console.log(userData);
 
 const showProfile=()=>{
     history.push(`/acount/${userAuthData.uid}`)
+    history.go(`/acount/${userAuthData.uid}`)
 }
 
 
@@ -62,7 +63,7 @@ const showProfile=()=>{
         variant="standard"
       />
 
-<Stack direction="row" spacing="8px" alignItems="center" >  <Avatar onClick={showProfile} src={userdb && userdb.data().ProfilePic} ></Avatar>      <Typography variant='h5' color="white.light" >{userdbData.userName}</Typography>
+<Stack onClick={showProfile} sx={{cursor: "pointer"}} direction="row" spacing="8px" alignItems="center" >  <Avatar  src={userdb && userdb.data().ProfilePic} ></Avatar>      <Typography variant='h5' color="white.light" sx={{"&:hover"  : {color: '#E3E3E3' }}} >{  userdbData?.userName}</Typography>
 </Stack>
 <Button variant="contained" sx={{height : 'inherit'}} >Log out</Button>
     </Stack>

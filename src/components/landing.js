@@ -63,7 +63,7 @@ if(Loading){
 if(emailVerrified){
 Verifymessage = ()=>{
     return (
-<Stack padding={2} spacing={2} direction="row" alignItems="center" bgcolor="secondary.light" margin="8px" borderRadius={1} >    <Typography> your email is not verrified yet 
+<Stack padding={4} spacing={2} width="50vw" direction="row" alignItems="center" bgcolor="secondary.light" margin="8px" borderRadius={1} >    <Typography> your email is not verrified yet 
     please verrify your Email  
     </Typography>
         <Button  variant='standard' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
@@ -101,7 +101,7 @@ const VerifyEmail = ()=>{
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
       </Modal>
-      <Stack borderRadius={1} width="40vw" alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
+      <Stack  borderRadius={1} width="50vw"  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
         <TextField fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
         <Stack width='100%' justifyContent="space-around" direction="row" spacing="32px" > <Button variant="outlined"  > Upload File </Button> <Button variant="contained" > Submit </Button> </Stack>
       </Stack>
