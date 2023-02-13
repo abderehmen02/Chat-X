@@ -14,7 +14,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 let newFollower = []
 let newFollowing = []
-let newFollowers = []
 let followerdata = []
 let followingdata = []
 
@@ -167,10 +166,14 @@ db.collection('users').doc(data.uid).update({
     }
 }
 
+
+
+
+
 const FollowingComponent = ()=>{
 
 if(Followings.length === 0){
-    return <Typography variant="h4" > No followings ! </Typography>
+   return <Typography padding={3}  bgcolor='secondary.light' sx={{fontSize:'24px'}} > No Followings ! </Typography>
 }
 if(LoadingFollowings){
     return <Typography variaant="h4" > Loading...  </Typography>
@@ -187,7 +190,7 @@ if(LoadingFollowings){
 const FollowersComponent = ()=>{
 
 if(Followers.length === 0){
-   return <Typography variant="h4" > No followings ! </Typography>
+   return <Typography padding={3}  bgcolor='secondary.light' sx={{fontSize:'24px'}} > No Followers ! </Typography>
 }
  return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
          <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followers  </h4>
