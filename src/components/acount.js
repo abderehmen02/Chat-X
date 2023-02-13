@@ -9,7 +9,7 @@ import { Avatar } from '@material-ui/core'
 import { Button , Checkbox ,   Dialog   , Stack , FormControlLabel  , Tooltip , Typography } from '@mui/material'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
+import SimplePersonImage from '../Images/unknownPerson.jpg'
 
 
 let newFollower = []
@@ -229,7 +229,7 @@ followerdata.map(user =>{
         </Tooltip>
   </Stack>     <Stack spacing={2} > 
                            <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </h4>
-            <Stack direction="row" height="fitContent"  spacing="16px" >
+            <Stack sx={{height: '40px'}} direction="row" height="fitContent"  spacing="16px" >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
             </Stack>
@@ -295,10 +295,10 @@ followerdata.map(user =>{
          </Dialog>
         <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
         <Stack spacing="2px"   >
-        <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black'   }}  > </Avatar>
+        <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc ||SimplePersonImage} sx={{boxShadow : '2px 2px 4px black'   }}  > </Avatar>
   </Stack>     <Stack spacing={2} > 
-                           <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </h4>
-            <Stack direction="row" height="fitContent"  spacing="16px" >
+                           <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{UserName} </h4>
+            <Stack height='40px' s direction="row"   spacing="16px" >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
 <button className='outlined' variant="standard" style={{display :'flex' , alignItems: 'center' , gap : '8px' }} > <Checkbox 
