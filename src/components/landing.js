@@ -29,6 +29,7 @@ const [VerrifyModal, setVerrifyModal] = useState(false)
 const history = useHistory()
 const data = useContext(Data).user
 const userdb = useContext(Data).userdb
+    const [displayList, setDisplayList] = useState(false)
 
 
 // components
@@ -97,16 +98,16 @@ const VerifyEmail = ()=>{
 
     return (
         <Stack  sx={{backgroundColor : 'secondary.dark' , width : '100vw' , minHeight: '100vh' , alignItems: 'center'  }} > 
-        <Nav/>
+        <Nav displayList={displayList} setDisplayList={setDisplayList} />
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
         </Modal>
-      <Stack  borderRadius={1} width="50vw"  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
+      <Stack onClick={()=>{setDisplayList(false)}}  borderRadius={1} width="50vw"  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
         <TextField fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
         <Stack width='100%' justifyContent="space-around" direction="row" spacing="32px" > <Button variant="outlined"  > Upload File </Button> <Button variant="contained" > Submit </Button> </Stack>
       </Stack>
-        <Verifymessage className="verify"/>
-<motion.div className='posts' initial={{x: '100vw'}} animate={{x: 0 , transition: {duration: 0.5}}} >
+        <Verifymessage onClick={()=>{setDisplayList(false)}} className="verify"/>
+<motion.div onClick={()=>{setDisplayList(false)}} className='posts' initial={{x: '100vw'}} animate={{x: 0 , transition: {duration: 0.5}}} >
 <Posts/>
 </motion.div>
         </Stack>

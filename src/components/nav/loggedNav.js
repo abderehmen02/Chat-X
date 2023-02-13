@@ -3,7 +3,7 @@ import React  , {useContext  , useState , useEffect}from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Data } from '../../App';
-import { useHistory } from 'react-router-dom';
+import { useHistory , Link} from 'react-router-dom';
 import  {db} from  '../../firebase'
 
 const StyledTextField =  styled(TextField)(({theme})=>({
@@ -28,14 +28,13 @@ const StyledTextField =  styled(TextField)(({theme})=>({
 
 
 
-function Nav() {
+function Nav({displayList , setDisplayList }) {
     const history  = useHistory()
     const userData = useContext(Data)
     const userdbData = userData?.userdbdata
     const userAuthData = userData?.user
     const userdb = userData?.userdb
     const [UserSearched, setUserSearched] = useState([])
-    const [displayList, setDisplayList] = useState(false)
 
 
 
@@ -81,8 +80,7 @@ console.log(UserSearched)
 <Stack>
  <StyledTextField
         placeholder='type the whole username'
-        onFocus={()=>{setDisplayList(true)}}
-        onBlur={()=>{setDisplayList(false)}}
+        onFocus={(e)=>{setDisplayList(true)   } }
         helperText="search for any person"
         id="input-with-icon-textfield"
         sx={{textAlign : 'right'}}
@@ -103,7 +101,7 @@ console.log(UserSearched)
 {displayList &&  UserSearched.map(user =>{
   console.log("user")
  console.log(user.data())
-    return           <button  onClick={()=>{ history.push(`/acount/${user.id}`)}} style={{padding : '8px 32px' , border: '1px solid black' , borderRadius : '8px'}} >{user.data().FirstName + "   " + user.data().lastName}</button>
+    return           <Typography bgcolor='standard.main' color='white.main'  onClick={(e)=>{ e.stopPropagation()  ;  history.push(`/acount/${user.id}`)}} sx={{padding : '8px 32px' , border: '1px solid black'  , borderRadius : '8px'}} >{user.data().FirstName + "   " + user.data().lastName}</Typography>
 })}
 
 
