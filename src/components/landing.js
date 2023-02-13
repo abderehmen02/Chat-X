@@ -98,7 +98,7 @@ const VerifyEmail = ()=>{
 
     return (
         <Stack  sx={{backgroundColor : 'secondary.dark' , width : '100vw' , minHeight: '100vh' , alignItems: 'center'  }} > 
-        <Nav displayList={displayList} setDisplayList={setDisplayList} />
+        <Nav logOut={logOut} displayList={displayList} setDisplayList={setDisplayList} />
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
         </Modal>

@@ -28,7 +28,7 @@ const StyledTextField =  styled(TextField)(({theme})=>({
 
 
 
-function Nav({displayList , setDisplayList }) {
+function Nav({displayList , setDisplayList  , logOut}) {
     const history  = useHistory()
     const userData = useContext(Data)
     const userdbData = userData?.userdbdata
@@ -123,7 +123,7 @@ console.log(UserSearched)
 
 <Stack onClick={showProfile} sx={{cursor: "pointer"}} direction="row" spacing="8px" alignItems="center" >  <Avatar  src={userdb && userdb.data().ProfilePic} ></Avatar>      <Typography variant='h5' color="white.light" sx={{"&:hover"  : {color: '#E3E3E3' }}} >{  userdbData?.userName}</Typography>
 </Stack>
-<Button variant="contained" sx={{height : 'inherit'}} >Log out</Button>
+<Button variant="contained" sx={{height : 'inherit'}} onClick={logOut} >Log out</Button>
     </Stack>
   )
 }
