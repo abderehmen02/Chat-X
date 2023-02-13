@@ -33,8 +33,11 @@ function Nav() {
     const userData = useContext(Data)
     const userdbData = userData?.userdbdata
     const userAuthData = userData?.user
-   const userdb = userData?.userdb
-   const [UserSearched, setUserSearched] = useState([])
+    const userdb = userData?.userdb
+    const [UserSearched, setUserSearched] = useState([])
+    const [displayList, setDisplayList] = useState(false)
+
+
 
     console.log(userdbData);
     console.log(userData);
@@ -71,13 +74,15 @@ useEffect(() => {
 )
 }, [])
 
-
-
+console.log(UserSearched)
 
   return (
   <Stack alignItems="center"  direction="row" width="100vw" margin={2} justifyContent="space-around">
 <Stack>
  <StyledTextField
+        placeholder='type the whole username'
+        onFocus={()=>{setDisplayList(true)}}
+        onBlur={()=>{setDisplayList(false)}}
         helperText="search for any person"
         id="input-with-icon-textfield"
         sx={{textAlign : 'right'}}
@@ -94,12 +99,28 @@ useEffect(() => {
         focus
         variant="standard"
       />
-  <List  >
-          <ListItem disablePadding sx={{backgroundColor:"#fff" , borderRadius: '16px' , border : '1px solid black' }}>
-            <ListItemButton>
-              <ListItemText primary="Trash" />
+  <List sx={{'zIndex': '2' , position : 'fixed' , top : '100px'  }}  >
+{displayList &&  UserSearched.map(user =>{
+  console.log("user")
+ console.log(user.data())
+    return           <ListItem disablePadding    sx={{backgroundColor:"#fff" , borderRadius: '16px' , border : '1px solid black' , margin : '2px' }}  >
+            <ListItemButton onClick={()=>{ alert("working" )  ; history.push(`/acount/${user.id}`)}} >
+              <ListItemText primary={user.data().FirstName + "   " + user.data().lastName} />
             </ListItemButton>
           </ListItem>
+
+})}
+
+
+
+
+
+
+
+
+
+
+
 </List>
 </Stack>
 
