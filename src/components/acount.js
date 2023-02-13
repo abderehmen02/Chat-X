@@ -3,10 +3,10 @@ import { db } from '../firebase'
 import { useParams , useHistory} from 'react-router-dom'
 import { Data } from '../App'
 import UploadProfileImg from './uploadProfileImage'
-import {    Dialog  } from '@material-ui/core';
 import Post from './post'
 import '../stylesheets/profile.css'
-import {  ThemeProvider , Stack , styled  , Button , Avatar  , Tooltip , Typography } from '@mui/material'
+import { Avatar } from '@material-ui/core'
+import { Button ,   Dialog   , Stack , styled    , Tooltip , Typography } from '@mui/material'
 import theme from '../styling/theme'
 let newFollower = []
 let newFollowing = []
@@ -220,7 +220,7 @@ followerdata.map(user =>{
 
 /// this is my profile
  if(params.id === data.uid){
-     return <ThemeProvider theme={theme} >  <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
+     return   <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
       <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
       <UploadProfileImg setProfileImageModel={setProfileImgModal} />
       </Dialog>
@@ -233,13 +233,13 @@ followerdata.map(user =>{
         <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
         <Stack spacing="2px"   >
         <Tooltip title="upload image"  >
-        <Avatar src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black' , width : '200px' , height : '200px'}}   onClick={()=>setProfileImgModal(true)}></Avatar >
+        <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black'   }}   onClick={()=>setProfileImgModal(true)}></Avatar >
         </Tooltip>
   </Stack>     <Stack spacing={2} > 
-                           <Typography textAlign="center" sx={{textTransform  : 'capitalize'}} variant="h4" color="white.light"   >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </Typography>
+                           <Typography textAlign="center" sx={{textTransform  : 'capitalize' , fontSize:'large' }}  color="white.light"   >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </Typography>
             <Stack direction="row" height="fitContent"  spacing="16px" >
-                <StyledButton   onClick={()=>{setFollowingModal(true)}}  > followings </StyledButton>
-                <Button variant="outlined"  onClick={()=>{setFollowerModal(true)}}  > followers </Button>
+                <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
+                <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
             </Stack>
         </Stack>
         </Stack>
@@ -255,10 +255,8 @@ followerdata.map(user =>{
  Timestamp={item.timestamp} /></div>
      } )}
             </Stack>
-                 <Button variant="outlined" >login</Button>
-
+                
      </Stack>
-     </ThemeProvider>
  }
 
 

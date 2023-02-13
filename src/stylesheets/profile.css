@@ -267,3 +267,40 @@
     border-radius: 5px;
   }
 }
+.followersBtn{
+  min-width : 200px ;
+    background-color : white;
+    color : black ;
+    cursor: pointer ;
+    border-radius : 8px ;
+    padding-top : 8px  ;
+    padding-bottom : 8px ;
+    padding-right : 60px;
+    padding-left : 60px ;
+    border: 1px solid black ;
+    
+}
+.followingBtn {
+              background-color: #53E05D ;
+                  color: #5222E0 ;
+                  border: 1px solid black ;
+                  border-radius: 8px;
+                  padding-top: 8px ;
+                  padding-bottom: 8px ;
+                  padding-right: 60px ;
+                  cursor: pointer;
+                  padding-left: 60px ;
+                  min-width: 200px ;
+}
+.followersBtn:hover{
+                background-color: black ;
+                    color: white ;
+                    border: 1px solid #fff ;
+}
+.followingBtn:hover{
+        background-color: #289430 ;
+            color:#fff ;
+}
+.followingBtn::hove {
+  color: red
+}
