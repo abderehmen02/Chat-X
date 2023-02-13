@@ -101,7 +101,7 @@ console.log(UserSearched)
 {displayList &&  UserSearched.map(user =>{
   console.log("user")
  console.log(user.data())
-    return           <Typography bgcolor='standard.main' color='white.main'  onClick={(e)=>{ e.stopPropagation()  ;  history.push(`/acount/${user.id}`)}} sx={{padding : '8px 32px' , border: '1px solid black'  , borderRadius : '8px'}} >{user.data().FirstName + "   " + user.data().lastName}</Typography>
+    return           <Typography  bgcolor='standard.main' color='white.main'  onClick={(e)=>{ e.stopPropagation()  ;  history.push(`/acount/${user.id}`)}} sx={{ cursor: 'pointer'  , padding : '8px 32px' , border: '1px solid black'  , borderRadius : '8px'}} >{user.data().FirstName + "   " + user.data().lastName}</Typography>
 })}
 
 
