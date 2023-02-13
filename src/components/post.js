@@ -15,13 +15,14 @@ import '../stylesheets/posts.css'
 import ForumTwoToneIcon from '@material-ui/icons/ForumTwoTone';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import { Checkbox , Dialog , Input , Button, Grid } from '@material-ui/core';
+import { Checkbox , Dialog , Input , Button, Grid, TextField } from '@material-ui/core';
 import { db } from '../firebase';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import * as firebase from '@firebase/app';
 import shortid from 'shortid';
 import { useHistory  , useParams} from 'react-router-dom';
 import { Data } from '../App';
+import { Stack } from '@mui/system';
 const months = [
 'January',
 'February',
@@ -132,21 +133,39 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
     }
 
     return (
-       <motion.div className='CommentsComponent' initial={{scale: 0.2}} animate={{scale: 1 , transition: {duration: 0.5}}} >
-       <h2 className='tittle tittleComments' >Comments</h2>
-      <h1> {Comments.length} </h1>
-      <div className='AllCommnets'>
-   <div className='innerComment'>      {Comments.map(item =>{
-           return ( 
-           <div className='SingleComponent' > <div className='avatar' > <Avatar alt="Remy Sharp" src={item.ProfilePic}  onClick={()=>{history.push(`/acount/${item.data.userId}`)}} /> </div> <div className='userNameAndComment' > <div className='userNameComment' >{item.data.userName}</div>  <div className='textComment' >{ item.data.comment } </div></div> </div>
-           )} )}
-   </div></div>
-   <div className='addComment' >
-    <Input value={comment}  color='primary' onChange={(event)=>{setComment(event.target.value)}} placeholder='Write a comment' />
-    <Button variant='contained' color='secondary' onClick={addComment} > save </Button>
-    </div>
-  </motion.div>
+      <Stack alignItems="centers" bgcolor="secondary.light" width="40vw"  padding={5} >
+        <h5 style={{ textAlign : 'center'  , fontSize: '24px' , margin: '40px'  }} >Comments {Comments.length} </h5>
+         <Stack spacing={2}  >
+          { Comments.map(comment =><Stack  alignItems="center"  padding='16px' bgcolor="white.dark" borderRadius={1} direction="row" spacing={3} >
+<Stack direction="row" spacing={1} alignItems='center' >
+<Avatar src={comment.ProfilePic} ></Avatar><Typography>{comment.data.userName}</Typography>
+</Stack>
+<Typography  >
+  {comment.data.comment}
+</Typography>
+          </Stack>) }
+         </Stack>
+             <Stack direction="row" width="100%" height="100px" sx={{alignItems :'center'}}  spacing={1} justifyContent="space-around" margin="40px 0px" >
+    <TextField value={comment} variant="filled"  color='primary' onChange={(event)=>{setComment(event.target.value)}} placeholder='Write a comment' />
+    <button className='contained' style={{height : '40px'}}  onClick={addComment} > save </button>
+    </Stack>
+      </Stack>
     )
+      //      <motion.div className='CommentsComponent' initial={{scale: 0.2}} animate={{scale: 1 , transition: {duration: 0.5}}} >
+  //      <h2 className='tittle tittleComments' >Comments</h2>
+  //     <h1> {Comments.length} </h1>
+  //     <div className='AllCommnets'>
+  //  <div className='innerComment'>      {Comments.map(item =>{
+  //          return ( 
+  //          <div className='SingleComponent' > <div className='avatar' > <Avatar alt="Remy Sharp" src={item.ProfilePic}  onClick={()=>{history.push(`/acount/${item.data.userId}`)}} /> </div> <div className='userNameAndComment' > <div className='userNameComment' >{item.data.userName}</div>  <div className='textComment' >{ item.data.comment } </div></div> </div>
+  //          )} )}
+  //  </div></div>
+  //  <div className='addComment' >
+  //   <Input value={comment}  color='primary' onChange={(event)=>{setComment(event.target.value)}} placeholder='Write a comment' />
+  //   <Button variant='contained' color='secondary' onClick={addComment} > save </Button>
+  //   </div>
+  // </motion.div>
+
   }
 ;
 console.log(props);

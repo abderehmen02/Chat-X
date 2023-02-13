@@ -13,21 +13,6 @@ let newFollowing = []
 let newFollowers = []
 let followerdata = []
 let followingdata = []
-const StyledButton = styled(Button)(({theme})=>({
-          backgroundColor : 'red' ,
-            color : '#5222E0' ,
-            borderRadius : '8px' ,
-            paddingTop : '8px' ,
-            paddingBottom : '8px' ,
-            paddingRight : '60px' ,
-            paddingLeft : '60px' ,
-            minWidth : '200px' ,
-                        boxShadow : '1px 2px 4px black' ,
-            "&:hover" : {
-            backgroundColor: '#289430' , 
-            color :'#fff'  ,
-            } , 
-  }))
 
 function Acount() {
 //hooks
@@ -187,7 +172,7 @@ if(LoadingFollowings){
     return <Typography variaant="h4" > Loading...  </Typography>
 }
    return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
-         <Typography  variant="h2" margin={1}   fontWeight="bold" textAlign="center" > Followings  </Typography>
+  <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followings  </h4>
         <Stack spacing={2} margin={1} width="30vw"  >
         {followingdata.map((item)=>{
            return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
@@ -201,7 +186,7 @@ if(Followers.length === 0){
    return <Typography variant="h4" > No followings ! </Typography>
 }
  return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
-         <Typography  variant="h2" margin={1}   fontWeight="bold" textAlign="center" > Followers  </Typography>
+         <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followers  </h4>
         <Stack spacing={2} margin={1} width="30vw"  >{
 followerdata.map(item =>{
     return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
@@ -236,7 +221,7 @@ followerdata.map(user =>{
         <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black'   }}   onClick={()=>setProfileImgModal(true)}></Avatar >
         </Tooltip>
   </Stack>     <Stack spacing={2} > 
-                           <Typography textAlign="center" sx={{textTransform  : 'capitalize' , fontSize:'large' }}  color="white.light"   >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </Typography>
+                           <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </h4>
             <Stack direction="row" height="fitContent"  spacing="16px" >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>

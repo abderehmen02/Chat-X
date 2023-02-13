@@ -304,3 +304,22 @@
 .followingBtn::hove {
   color: red
 }
+
+
+.contained{
+              background-color: #53E05D;
+                color: #5222E0;
+                border: 1px solid black;
+                border-radius: 8px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-right: 60px;
+                cursor: pointer;
+                padding-left: 60px;
+                min-width: 200px;
+}
+.contained:hover{
+
+    background-color: #289430;
+    color: #fff;
+}
