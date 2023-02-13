@@ -1,6 +1,6 @@
 import React , {useEffect  , useContext , useState}from 'react'
 import { Modal, TextField} from '@material-ui/core'
-import {auth} from '../firebase'
+import {auth  } from '../firebase'
 import { motion  , AnimatePresence  } from 'framer-motion'
 import { useHistory } from 'react-router-dom'
 import UploadImage from './UploadImage'
@@ -30,6 +30,7 @@ const history = useHistory()
 const data = useContext(Data).user
 const userdb = useContext(Data).userdb
 
+
 // components
 let Verifymessage = ()=>{
     return <div></div>
@@ -49,6 +50,11 @@ setEmailVerrified(true)
   }
 })
 }, [])
+
+
+
+
+
 
 // conditions
 if(Loading){
@@ -82,25 +88,19 @@ const verrify = ()=>{
 alert(error.message)
     })
 }
-const myvarients = {
-    hidden: {scale: 0.1} ,
-    visible: {scale: 1 , transition: {duration: 0.4}}
-  ,  zoomIn: {
-x: [9 , -9 ,7,-7,5,-5 ,0] 
-    }
-}
 const VerifyEmail = ()=>{
     return    <motion.div initial={{scale: 0.2}} animate={{scale: 1 , transform: {duration: 1} }} className='emailVerefication' >
     <h2 className='tittle' > Email Verefication </h2>
          <Button onClick={verrify} color='secondary' variant='outlined' > send a link </Button>
     </motion.div>
 }
+
     return (
         <Stack  sx={{backgroundColor : 'secondary.dark' , width : '100vw' , minHeight: '100vh' , alignItems: 'center'  }} > 
         <Nav/>
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
-      </Modal>
+        </Modal>
       <Stack  borderRadius={1} width="50vw"  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
         <TextField fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
         <Stack width='100%' justifyContent="space-around" direction="row" spacing="32px" > <Button variant="outlined"  > Upload File </Button> <Button variant="contained" > Submit </Button> </Stack>
