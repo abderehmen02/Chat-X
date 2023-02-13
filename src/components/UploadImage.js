@@ -60,8 +60,18 @@ profilePic: userdbdata.ProfilePic
 
 return(
         <Stack   borderRadius={1} width="50vw"  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
-        <TextField fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
-        <Stack width='100%' justifyContent="space-around" direction="row" spacing="32px" > <Button variant="outlined"  > Upload File </Button> <Button variant="contained" > Submit </Button> </Stack>
+        <TextField value={Caption} onChange={(event)=>{setCaption(event.target.value)}} fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
+        <Stack width='100%' justifyContent="space-around" direction="row" spacing="32px" > <Button
+  variant="outlined"
+  component="label"
+>
+  Upload File
+  <input
+    type="file"
+    hidden
+    onChange={handleFiles}
+  />
+</Button> <Button variant="contained" onClick={uploadFile} > Submit </Button> </Stack>
       </Stack>
 
 )  

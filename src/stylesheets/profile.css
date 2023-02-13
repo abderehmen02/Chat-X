@@ -267,7 +267,7 @@
     border-radius: 5px;
   }
 }
-.followersBtn{
+.followersBtn ,  .outlined{
   min-width : 200px ;
     background-color : white;
     color : black ;

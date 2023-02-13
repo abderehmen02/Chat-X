@@ -6,8 +6,12 @@ import UploadProfileImg from './uploadProfileImage'
 import Post from './post'
 import '../stylesheets/profile.css'
 import { Avatar } from '@material-ui/core'
-import { Button ,   Dialog   , Stack , styled    , Tooltip , Typography } from '@mui/material'
-import theme from '../styling/theme'
+import { Button , Checkbox ,   Dialog   , Stack , FormControlLabel  , Tooltip , Typography } from '@mui/material'
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
+
+
 let newFollower = []
 let newFollowing = []
 let newFollowers = []
@@ -294,6 +298,14 @@ followerdata.map(user =>{
             <Stack direction="row" height="fitContent"  spacing="16px" >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
+<Button className="outlined" variant="standard" startIcon={<Checkbox 
+    onChange={AddIconChanged } 
+    checked={IsAded}
+    disabled={!AddIcon}
+    icon={<CheckCircleOutlineIcon/>}
+    checkedIcon={<CheckCircleIcon  />}
+    ></Checkbox>}  >{IsAded ? 'followed'  : 'following'}
+</Button>
             </Stack>
         </Stack>
         </Stack>
