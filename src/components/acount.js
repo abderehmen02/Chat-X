@@ -279,49 +279,47 @@ followerdata.map(user =>{
 
 
 // this is another one profile
-    return (<Stack>
-        Bage is building
-    </Stack>
-     )
-//          <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile another  gradient-borderAutherProfile ">
-//        <div className='header' >
+    return (         <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile another  gradient-borderAutherProfile ">
+       <div className='header' >
 
-// <div className='identity anotherAcoutIdentity'>
-// <motion.div variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div>
-//     <motion.div className='UserName' variants={myVarients}  initial='outside' animate='zoom' >{UserName}</motion.div>
-//     <FormControlLabel control={  <Checkbox 
-//     onChange={AddIconChanged } 
-//     checked={IsAded}
-//     disabled={!AddIcon} color="secondry"
-//     className={classes.formControl}
-//     icon={<ControlPointDuplicateIcon/>}
-// checkedIcon={<CheckCircleIcon className={classes.checked} />}
-// ></Checkbox>}></FormControlLabel>
-//     <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
-//    <FollowersComponent/>      
-//  </Dialog>
-// <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
-//     <FollowingComponent/>
-// </Dialog>
-// </div>
-// <div className='buttonsPfofile' >
-//  <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowerModal(true)}} > Followers </Button>
-//  <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowingModal(true)}} >Followings</Button>    </div>
-//   <motion.div whileHover={{scale: 1.5 }} >
-// </motion.div>
+<div className='identity anotherAcoutIdentity'>
+<motion.div variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div>
+    <motion.div className='UserName' variants={myVarients}  initial='outside' animate='zoom' >{UserName}</motion.div>
+    <FormControlLabel control={  <Checkbox 
+    onChange={AddIconChanged } 
+    checked={IsAded}
+    disabled={!AddIcon} color="secondry"
+    className={classes.formControl}
+    icon={<ControlPointDuplicateIcon/>}
+checkedIcon={<CheckCircleIcon className={classes.checked} />}
+></Checkbox>}></FormControlLabel>
+    <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+   <FollowersComponent/>      
+ </Dialog>
+<Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+    <FollowingComponent/>
+</Dialog>
+</div>
+<div className='buttonsPfofile' >
+ <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowerModal(true)}} > Followers </Button>
+ <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowingModal(true)}} >Followings</Button>    </div>
+  <motion.div whileHover={{scale: 1.5 }} >
+</motion.div>
  
-//       </div>
-//                  <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
+      </div>
+                 <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
 
             
-//  {Posts.map(item =>{
-//         return <div className='postInProfile'>
-//          <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
-// ProfilePic={item.profilePic} 
-// Timestamp={item.timestamp}/> </div>
-//     } )}    
-//             </motion.div>
-//         </motion.div>
+ {Posts.map(item =>{
+        return <div className='postInProfile'>
+         <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+ProfilePic={item.profilePic} 
+Timestamp={item.timestamp}/> </div>
+    } )}    
+            </motion.div>
+        </motion.div>
+
+     )
 }
 
 export default Acount

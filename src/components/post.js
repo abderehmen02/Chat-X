@@ -137,7 +137,7 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
         <h5 style={{ textAlign : 'center'  , fontSize: '24px' , margin: '40px'  }} >Comments {Comments.length} </h5>
          <Stack spacing={2}  >
           { Comments.map(comment =><Stack  alignItems="center"  padding='16px' bgcolor="white.dark" borderRadius={1} direction="row" spacing={3} >
-<Stack direction="row" spacing={1} alignItems='center' >
+<Stack sx={{cursor: 'pointer'}}  onClick={()=>{history.push(`/acount/${comment.data.userId}`)}} direction="row" spacing={1} alignItems='center' >
 <Avatar src={comment.ProfilePic} ></Avatar><Typography>{comment.data.userName}</Typography>
 </Stack>
 <Typography  >
@@ -202,8 +202,7 @@ checked={IsLiked} onChange={likedIconChanged}
     <div className='likesLinegth' > {Likes.length} </div> 
         </IconButton>
         <IconButton aria-label="share">
-          <ForumTwoToneIcon onClick={()=>{setCommentModal(true)}} />
-          
+          <ForumTwoToneIcon onClick={()=>{setCommentModal(true)}} />          
         </IconButton>
       </CardActions>
       </Card>
