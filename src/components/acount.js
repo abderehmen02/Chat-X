@@ -293,12 +293,12 @@ followerdata.map(user =>{
          <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
          <FollowingComponent/>
          </Dialog>
-        <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
-        <Stack spacing="2px"   >
+        <Stack  height="fit-content"  margin={4}  direction="row" width={{xs: '80vw' , md: '60vw'}} justifyContent='space-around' spacing={2} alignItems="center" padding='24px 12px'  >
+        <Stack spacing="2px" alignItems="center"  >
         <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc ||SimplePersonImage} sx={{boxShadow : '2px 2px 4px black'   }}  > </Avatar>
   </Stack>     <Stack spacing={2} > 
                            <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{UserName} </h4>
-            <Stack height='40px' s direction="row"   spacing="16px" >
+            <Stack  height={{md : '40px'}}  direction={{md: 'row'}}   spacing={{xs: '8px' , md: 2}} >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
 <button  className='outlined' variant="standard" style={{display :'flex' , alignItems: 'center' , justifyContent : 'center', gap : '8px' }} > <Checkbox 
@@ -326,7 +326,6 @@ followerdata.map(user =>{
             </Stack>
                 
      </Stack>
-
 )
 //         <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile another  gradient-borderAutherProfile ">
 //        <div className='header' >
