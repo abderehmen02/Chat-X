@@ -272,6 +272,7 @@
     background-color : white;
     color : black ;
     cursor: pointer ;
+    width: 'fit-content' ;
     border-radius : 8px ;
     padding-top : 8px  ;
     padding-bottom : 8px ;
@@ -287,12 +288,12 @@
                   border-radius: 8px;
                   padding-top: 8px ;
                   padding-bottom: 8px ;
-                  padding-right: 60px ;
+                  padding-right: 30px ;
                   cursor: pointer;
-                  padding-left: 60px ;
+                  padding-left: 30px ;
                   min-width: 200px ;
 }
-.followersBtn:hover{
+.followersBtn:hover , .outlined:hover{
                 background-color: black ;
                     color: white ;
                     border: 1px solid #fff ;

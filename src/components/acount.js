@@ -301,7 +301,7 @@ followerdata.map(user =>{
             <Stack height='40px' s direction="row"   spacing="16px" >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
-<button className='outlined' variant="standard" style={{display :'flex' , alignItems: 'center' , gap : '8px' }} > <Checkbox 
+<button  className='outlined' variant="standard" style={{display :'flex' , alignItems: 'center' , justifyContent : 'center', gap : '8px' }} > <Checkbox 
     onChange={AddIconChanged } 
     checked={IsAded}
     disabled={!AddIcon}
