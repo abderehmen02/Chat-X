@@ -136,9 +136,9 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
       <Stack alignItems="centers" bgcolor="secondary.light" width={{md : '40vw' , xs: '80vw'}}  padding={5} >
         <h5 style={{ textAlign : 'center'  , fontSize: '24px' , margin: '40px'  }} >Comments {Comments.length} </h5>
          <Stack spacing={2}  >
-          { Comments.map(comment =><Stack  alignItems="center"  padding='16px' bgcolor="white.dark" borderRadius={1} direction="row" spacing={3} >
+          { Comments.map(comment =><Stack  alignItems="center"  padding='16px' bgcolor="white.dark" borderRadius={1} direction={{md : 'row'}} spacing={3} >
 <Stack sx={{cursor: 'pointer'}}  onClick={()=>{history.push(`/acount/${comment.data.userId}`)}} direction="row" spacing={1} alignItems='center' >
-<Avatar src={comment.ProfilePic} ></Avatar><Typography>{comment.data.userName}</Typography>
+<Avatar src={comment.ProfilePic} ></Avatar><Typography textAlign="start" >{comment.data.userName}</Typography>
 </Stack>
 <Typography  >
   {comment.data.comment}

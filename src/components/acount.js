@@ -229,7 +229,7 @@ followerdata.map(user =>{
         </Tooltip>
   </Stack>     <Stack spacing={2} > 
                            <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </h4>
-            <Stack sx={{height: '40px'}} direction="row" height="fitContent"  spacing="16px" >
+            <Stack sx={{height: '40px'}} direction={{md : 'row'}} height="fitContent"  spacing={{xs: 1 , md: '16px'}} >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
             </Stack>
