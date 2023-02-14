@@ -13,7 +13,7 @@ yesterday.setDate(today.getDate() - 1)
 
 
 const NoPosts =()=>{
-    return <Stack alignItems="center" width="50vw" padding={4} bgcolor="white.light" ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
+    return <Stack alignItems="center" width={{xs: '80vw' , md: '50vw'}} padding={4} bgcolor="white.light"  ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
 }
 
 function posts() {
