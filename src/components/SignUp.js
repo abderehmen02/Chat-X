@@ -86,9 +86,9 @@ return (
    <Stack sx={{ backgroundColor: 'secondary.dark' , width:"100vw" , minHeight: '100vh' , alignItems: 'center'  }}  onClick={()=>{setNav(false)}} >
     <Modal onClose={()=>{setVerefyModal(false)}} open={VerefyModal} sx={{display : 'flex' , alignItems : 'center' , justifyContent: 'center'}} >
   <motion.div initial={{scale: 0.3}} animate={{scale: 1}} transition={{duration: 0.5}}  className='verifyComponent'>
-  <Stack spacing={4} >
+  <Stack spacing={4}  >
   <Typography textAlign="center" variant="h3" >Please Verify Your Acount</Typography>
-  <Stack direction="row" spacing={2} >
+  <Stack direction={{md : 'row'}} spacing={{md : 2 , xs: 1}} >
   <Button variant="contained"  onClick={addAndVerify}> Verrity Email </Button>
   <Button variant="outlined" onClick={add}> Not Now       </Button>
 </Stack>

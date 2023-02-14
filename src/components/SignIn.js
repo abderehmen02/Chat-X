@@ -45,7 +45,7 @@ const history = useHistory()
     }
      const [Open, setOpen] = useState(true)
     return (
-        <Stack  sx={{ border: '2px solid red'  , position : 'relative' , alignItems: 'center' , backgroundColor: 'secondary.dark' , width: '100vw' , minHeight: '100vh' }} onClick={()=>{setNav(false)}} spacing="64px" >
+        <Stack  sx={{  position : 'relative' , alignItems: 'center' , backgroundColor: 'secondary.dark' , width: '100vw' , minHeight: '100vh' }} onClick={()=>{setNav(false)}} spacing="64px" >
         <TopNav Nav={Nav} setNav={setNav} />
         <SideBar Nav={Nav} setNav={setNav} />
         <Stack direction={{xs: "column" , md: 'row'}} spacing={{xs: '40px'}} width="90%"  justifyContent="space-around" >

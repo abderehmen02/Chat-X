@@ -46,7 +46,7 @@ console.log(Message)
 // functios excuting
 return(<Stack padding={2} spacing={2} bgcolor='secondary.light' >
 <LinearProgress value={Upload} variant="determinate"  />
-<Stack direction="row" spacing="16px" >
+<Stack direction={{md : 'row'}} spacing={{md : 2 , xs: 1}} >
 <Button disabled={!Image} onClick={uploadFile} variant="contained" > Submit </Button> 
 <Button
   variant="outlined"
