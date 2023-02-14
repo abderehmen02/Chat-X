@@ -133,7 +133,7 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
     }
 
     return (
-      <Stack alignItems="centers" bgcolor="secondary.light" width="40vw"  padding={5} >
+      <Stack alignItems="centers" bgcolor="secondary.light" width={{md : '40vw' , xs: '80vw'}}  padding={5} >
         <h5 style={{ textAlign : 'center'  , fontSize: '24px' , margin: '40px'  }} >Comments {Comments.length} </h5>
          <Stack spacing={2}  >
           { Comments.map(comment =><Stack  alignItems="center"  padding='16px' bgcolor="white.dark" borderRadius={1} direction="row" spacing={3} >
@@ -145,7 +145,7 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
 </Typography>
           </Stack>) }
          </Stack>
-             <Stack direction="row" width="100%" height="100px" sx={{alignItems :'center'}}  spacing={1} justifyContent="space-around" margin="40px 0px" >
+             <Stack direction={{md : 'row'}} width="100%" height="100px" sx={{alignItems :'center'}}  spacing={{xs: 1 , md : 1}} justifyContent="space-around" margin="40px 0px" >
     <TextField value={comment} variant="filled"  color='primary' onChange={(event)=>{setComment(event.target.value)}} placeholder='Write a comment' />
     <button className='contained' style={{height : '40px'}}  onClick={addComment} > save </button>
     </Stack>
