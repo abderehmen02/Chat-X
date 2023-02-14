@@ -222,14 +222,14 @@ followerdata.map(user =>{
          <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
          <FollowingComponent/>
          </Dialog>
-        <Stack   margin={4}  direction="row" width='60vw' alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
-        <Stack spacing="2px"   >
+        <Stack   margin={4}    direction="row" width={{md : '60vw'}} alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
+        <Stack spacing="2px"    >
         <Tooltip title="upload image"  >
         <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black'   }}   onClick={()=>setProfileImgModal(true)}></Avatar >
         </Tooltip>
-  </Stack>     <Stack spacing={2} > 
+  </Stack>  <Stack spacing={2} > 
                            <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </h4>
-            <Stack sx={{height: '40px'}} direction={{md : 'row'}} height="fitContent"  spacing={{xs: 1 , md: '16px'}} >
+            <Stack height={{md : '40px'}} direction={{md : 'row'}}   spacing={{xs: 1 , md: '16px'}} >
                 <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
                 <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
             </Stack>
