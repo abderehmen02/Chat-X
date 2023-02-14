@@ -1,6 +1,5 @@
 import React , {useState , useEffect , useContext} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { motion } from 'framer-motion';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -15,7 +14,7 @@ import '../stylesheets/posts.css'
 import ForumTwoToneIcon from '@material-ui/icons/ForumTwoTone';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import { Checkbox , Dialog , Input , Button, Grid, TextField } from '@material-ui/core';
+import { Checkbox , Dialog , TextField  } from '@material-ui/core';
 import { db } from '../firebase';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import * as firebase from '@firebase/app';
@@ -138,7 +137,7 @@ db.collection('users').doc(props.userId).collection('posts').doc(props.postkey).
          <Stack spacing={2}  >
           { Comments.map(comment =><Stack  alignItems="center"  padding='16px' bgcolor="white.dark" borderRadius={1} direction={{md : 'row'}} spacing={3} >
 <Stack sx={{cursor: 'pointer'}}  onClick={()=>{history.push(`/acount/${comment.data.userId}`)}} direction="row" spacing={1} alignItems='center' >
-<Avatar src={comment.ProfilePic} ></Avatar><Typography textAlign="start" >{comment.data.userName}</Typography>
+<Avatar src={comment.ProfilePic} ></Avatar><Typography  >{comment.data.userName}</Typography>
 </Stack>
 <Typography  >
   {comment.data.comment}
@@ -179,7 +178,7 @@ console.log(props);
           </Avatar>
         }
         action={
-        params.id === data.uid && <DeleteForeverIcon onClick={postDeleted} />
+        params.id === data.uid &&<div style={{cursor: 'pointer'}} className="deleteIcon" ><DeleteForeverIcon  onClick={postDeleted} /></div>
         }
         title={props.userName}
         subheader={`${props.Timestamp.toDate().getDate()} ${months[props.Timestamp.toDate().getMonth()]}`}

@@ -104,7 +104,7 @@ const VerifyEmail = ()=>{
         </Modal>
         <UploadImage/>
         <Verifymessage onClick={()=>{setDisplayList(false)}} className="verify"/>
-<motion.div onClick={()=>{setDisplayList(false)}} className='posts' initial={{x: '100vw'}} animate={{x: 0 , transition: {duration: 0.5}}} >
+<motion.div onClick={()=>{setDisplayList(false)}}  className='posts' initial={{x: '100vw'}} animate={{x: 0 , transition: {duration: 0.5}}} >
 <Posts/>
 </motion.div>
         </Stack>
