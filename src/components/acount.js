@@ -238,7 +238,7 @@ followerdata.map(user =>{
           <Stack spacing={2} >
             {!Posts.length && <NoPosts/>  }
         </Stack>
-                <Stack width='50vw'>
+                <Stack width={{xs : '80vw' , md : '50vw'}}>
                   {Posts.map(item =>{
 /// person profile 
          return <div className='postInProfile'>
