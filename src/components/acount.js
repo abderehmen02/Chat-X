@@ -178,9 +178,9 @@ if(Followings.length === 0){
 if(LoadingFollowings){
     return <Typography variaant="h4" > Loading...  </Typography>
 }
-   return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
+   return  <Stack   padding={2} spacing={5}   bgcolor="secondary.light" >
   <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followings  </h4>
-        <Stack spacing={2} margin={1} width="30vw"  >
+        <Stack spacing={2} margin={1} width={{md : '30vw' , xs: '70vw'}}  >
         {followingdata.map((item)=>{
            return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
         })}
@@ -194,7 +194,7 @@ if(Followers.length === 0){
 }
  return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
          <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followers  </h4>
-        <Stack spacing={2} margin={1} width="30vw"  >{
+        <Stack spacing={2} margin={1} width={{md : '30vw' , xs: '70vw'}}  >{
 followerdata.map(item =>{
     return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
 })}
@@ -315,7 +315,7 @@ followerdata.map(user =>{
           <Stack spacing={2} >
             {!Posts.length && <NoPosts/>  }
         </Stack>
-                <Stack width='50vw'>
+                <Stack width={{xs : '80vw' , md : '50vw'}}>
                   {Posts.map(item =>{
 /// person profile 
          return <div className='postInProfile'>
