@@ -7,6 +7,9 @@ import { Data } from '../../App';
 import { useHistory , Link} from 'react-router-dom';
 import  {db} from  '../../firebase'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import CloseIcon from '@mui/icons-material/Close';
+
+
 
 const StyledTextField =  styled(TextField)(({theme})=>({
  '& label': {
@@ -80,11 +83,11 @@ useEffect(() => {
 const MobileNav = ()=>{
   const [ openMobileNav, setOpenModileNav ] = useState(false)
   return <Stack display={{md: 'none'}} >
-<Stack alignItems="center" width='100vw' height="10vh" justifyContent="space-around" direction="row" ><FormatListBulletedIcon  onClick={()=>{setOpenModileNav(false)}} display={!openMobileNav} ></FormatListBulletedIcon> <Stack onClick={showProfile} sx={{cursor: "pointer"}} direction="row" spacing="8px" alignItems="center" >  <Avatar style={{width : '30px' , height  : '30px' }} src={userdb && userdb.data().ProfilePic} ></Avatar>      <Typography sx={{fontSize : '24px'}} color="white.light"  >{  userdbData?.userName}</Typography>
+<Stack alignItems="center" width='100vw' height="10vh" justifyContent="space-around" direction="row" ><FormatListBulletedIcon  onClick={()=>{setOpenModileNav(true)}} display={!openMobileNav} ></FormatListBulletedIcon> <Stack onClick={showProfile} sx={{cursor: "pointer"}} direction="row" spacing="8px" alignItems="center" >  <Avatar style={{width : '30px' , height  : '30px' }} src={userdb && userdb.data().ProfilePic} ></Avatar>      <Typography sx={{fontSize : '24px'}} color="white.light"  >{  userdbData?.userName}</Typography>
 </Stack>
 <img src={MyLogo} style={{width : '50px' , height : '50px' , borderRadius : '8px'}} ></img>
 </Stack> 
- { openMobileNav && <Stack >
+ { openMobileNav && <Stack bgcolor="secondary.main" sx={{ zIndex: 2 , position :'absolute' , width : '100vw' ,height:  '100vh', alignItems: 'center' , justifyContent: 'center' }} spacing={2} >
 <StyledTextField
         placeholder='type the whole username'
         helperText="search for any person"
@@ -104,11 +107,12 @@ const MobileNav = ()=>{
         variant="standard"
 />
 
-   <Stack sx={{position : 'absolute' , top : '100px' }} spacing="2px" >
+   <Stack maxHeight="70vh" overflow='scroll'  spacing="2px" >
 { UserSearched.map(user =>{
     return           <Typography  bgcolor='standard.main' color='white.main'  onClick={(e)=>{ e.stopPropagation()  ;  history.push(`/acount/${user.id}`)}} sx={{ cursor: 'pointer'  , padding : '8px 32px' , border: '1px solid black'  , borderRadius : '8px'}} >{user.data().FirstName + "   " + user.data().lastName}</Typography>
 })}
-</Stack> 
+</Stack>
+<CloseIcon onClick={()=>setOpenModileNav(false)} />
 </Stack> }
   </Stack>
 }
