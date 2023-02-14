@@ -59,9 +59,9 @@ profilePic: userdbdata.ProfilePic
 
 
 return(
-        <Stack   borderRadius={1} width="50vw"  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
+        <Stack   borderRadius={1} width={{xs: '80vw' , md : '50vw'}}  alignItems="center"  padding={4} spacing={2}  bgcolor="white.light" >
         <TextField value={Caption} onChange={(event)=>{setCaption(event.target.value)}} fullWidth multiline rows={3}  variant="filled" sx={{width : '100%'  }}  ></TextField>
-        <Stack width='100%' justifyContent="space-around" direction="row" spacing="32px" > <Button
+        <Stack width='100%'   justifyContent="space-around" direction={{md : 'row'}} spacing={{xs: '8px' , md: '32px'}} > <Button
   variant="outlined"
   component="label"
 >

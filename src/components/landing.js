@@ -70,10 +70,10 @@ if(Loading){
 if(emailVerrified){
 Verifymessage = ()=>{
     return (
-<Stack padding={4} spacing={2} width="50vw" direction="row" alignItems="center" bgcolor="secondary.light" margin="8px" borderRadius={1} >    <Typography> your email is not verrified yet 
+<Stack padding={4} spacing={{md: 2 , xs: 1}} width={{xs: '80vw' ,md :  '50vw' }} direction={{md: 'row' }} alignItems="center" bgcolor="secondary.light" margin="8px" borderRadius={1} >    <Typography textAlign="center" > your email is not verrified yet 
     please verrify your Email  
     </Typography>
-        <Button  variant='standard' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
+        <Button  width={{xs: '100%'}}  variant='standard' onClick={ ()=>{setVerrifyModal(true)}}>Verriy Email</Button>
 
     </Stack> )
 }
