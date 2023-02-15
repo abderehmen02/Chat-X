@@ -1,96 +1,24 @@
-import React , {useState , useEffect , useContext} from 'react'
+import React , {useState , useEffect  , useContext} from 'react'
 import { db } from '../firebase'
-
 import { useParams , useHistory} from 'react-router-dom'
 import { Data } from '../App'
-import { motion , AnimatePresence } from "framer-motion"
-import {Animated} from "react-animated-css";
 import UploadProfileImg from './uploadProfileImage'
-import Avatar from '@material-ui/core/Avatar'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ControlPointDuplicateIcon from '@material-ui/icons/ControlPointDuplicate';;
-import { Checkbox  , FormControlLabel  , Dialog , makeStyles ,  Modal , Button } from '@material-ui/core';
 import Post from './post'
 import '../stylesheets/profile.css'
-const myVarients = {
-    
-    hidden: {
-        y: '-100vh', 
-    } ,
-    visible:{
-        y: 0 , 
-        transition : {
-            duration: 0.3
-        } ,
-        
-    } ,
-    hover: {
-           scale: 1.5 ,
-           transition: {type: 'spring'  }
-        } , 
-    zoom: {
-scale: 1,  
-y: 0, 
-          transition: { duration: 0.4 , delay: 0.2 }
-        } , 
-        zoomIn: {
-            scale: 1.5 , 
-            zIndex: 2 ,  
-            transition: {type: 'spring' }
-        } ,
-    outside: {
-        scale: 0.5 , 
-        y: '-50vh'
-    },
-    outsideRight : {
-        scale: 0.2 , 
-x: '-50vw'
-    } ,
-    drag: {
-        scale: 1 ,
-        x: 0  ,
-        transition: {duration: 0.4 , delay: 0.5}
-    } ,
-    DisplayComponent: {
-        scale: 1 ,
-        transition: {duration: 0.4}
-    } ,
-    ComponentSmall : {
-        scale: 0.1
-    }
-}
+import { Avatar } from '@material-ui/core'
+import { Button , Checkbox ,   Dialog   , Stack , FormControlLabel  , Tooltip , Typography } from '@mui/material'
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import SimplePersonImage from '../Images/unknownPerson.jpg'
+
+
 let newFollower = []
 let newFollowing = []
-let newFollowers = []
 let followerdata = []
 let followingdata = []
-const useStyles = makeStyles((theme) => ({
-  avatar: {
-    width: theme.spacing(8),
-    height: theme.spacing(8),
-    boxShadow: '4px 4px 5px yellow'
-  },
-  btn: {
-      border: '2px solid black' , 
-      borderRadius: 20 , 
-      boxShadow: '2px 2px 5px black' , 
-      margin: 10 , 
-      fontSize: '1.1em',
-      width: '75%'
-  } ,
-  formControl : {
-fontSize: '2em' , 
-color: 'orange' , 
-boxShadow: '2px 2px 2px black'
-  } ,
-  checked : {
-      color: '#10fd30' , 
-  }
-}))
+
 function Acount() {
-  
 //hooks
-const classes = useStyles()
     const params = useParams()
     const history = useHistory()
     const [FollowingModal, setFollowingModal] = useState(false)
@@ -109,9 +37,9 @@ const classes = useStyles()
     const userdbdata = useContext(Data).userdbdata
     const [LoadingFollowers, setLoadingFollowers] = useState(true)
     const [FollowerModal, setFollowerModal] = useState(false)
-     const [UserName, setUserName] = useState('')
- const [PostLoading, setPostLoading] = useState(true)
- const [Reload, setReload] = useState(false)
+    const [UserName, setUserName] = useState('')
+    const [PostLoading, setPostLoading] = useState(true)
+    const [Reload, setReload] = useState(false)
 
 useEffect(() => {
  
@@ -179,10 +107,26 @@ return ()=>{
 }
     
 }, [Followers , Followings])
+
+
+
+
+
+
+
+
+
 if(PostLoading){
     return <h1>Loading...</h1>
 }
 //functions declarations
+
+const NoPosts =()=>{
+    return <Stack alignItems="center" width="50vw" padding={2} bgcolor="white.light" ><Typography color="secodary.dark" textAlign="center" width="100%"  >  You have no posts currently !!  </Typography></Stack>
+}
+
+
+
 const AddIconChanged =()=>{
 
     setAddIcon(false) 
@@ -222,117 +166,206 @@ db.collection('users').doc(data.uid).update({
     }
 }
 
+
+
+
+
 const FollowingComponent = ()=>{
 
 if(Followings.length === 0){
-    return <h5 className='noFollow' >No following</h5>
+   return <Typography padding={3}  bgcolor='secondary.light' sx={{fontSize:'24px'}} > No Followings ! </Typography>
 }
 if(LoadingFollowings){
-    return <h4> Loading...  </h4>
+    return <Typography variaant="h4" > Loading...  </Typography>
 }
-   return  <motion.div variants={myVarients} className='followingsComponent' initial='ComponentSmall' animate='DisplayComponent'  >
-        <h2 className='title' >Followings</h2>
-        <div className='following' >
+   return  <Stack   padding={2} spacing={5}   bgcolor="secondary.light" >
+  <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followings  </h4>
+        <Stack spacing={2} margin={1} width={{md : '30vw' , xs: '70vw'}}  >
         {followingdata.map((item)=>{
-
-            return <div onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </div>
+           return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
         })}
-        </div>
-    </motion.div>
+        </Stack>
+    </Stack>
 }
 const FollowersComponent = ()=>{
 
 if(Followers.length === 0){
-return <h4 className='noFollow' > no follower</h4>
+   return <Typography padding={3}  bgcolor='secondary.light' sx={{fontSize:'24px'}} > No Followers ! </Typography>
 }
-return (
-<motion.div  variants={myVarients} className='followingsComponent' initial='ComponentSmall' animate='DisplayComponent'   className='followersComponent' >
-<h2 className='title' >Followers</h2>
+ return  <Stack   padding={2} spacing={5}  bgcolor="secondary.light" >
+         <h4 style={{textAlign: 'center'  , fontSize: '32px', textTransform : 'capitalize' }} > Followers  </h4>
+        <Stack spacing={2} margin={1} width={{md : '30vw' , xs: '70vw'}}  >{
+followerdata.map(item =>{
+    return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
+})}
+        </Stack>
+    </Stack>}
+
+{/* <motion.div  variants={myVarients} className='followingsComponent' initial='ComponentSmall' animate='DisplayComponent'   className='followersComponent' >
 <div className='followers'>
 {
 followerdata.map(user =>{
-    return <div className='follower' onClick={()=>{   history.push(`/acount/${user.id}`)  ; window.location.reload() ; }}> {user.data.FirstName}  {user.data.lastName}</div>
+    return <Typography textAlign="center" border='1px solid black'  padding='8px 16px'  bgcolor="white.light"  borderRadius={1} onClick={()=>{history.push(`/acount/${item.id}`)  ; window.location.reload() ;   }} > {item.data.FirstName}   {item.data.lastName} </Typography>
 })
-}</div>
-</motion.div>
-)}
+}</Stack>
+</motion.div> */}
+
 /// this is my profile
  if(params.id === data.uid){
-     return   <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile mine gradient-border "> 
-     <div className='header' >
-     <div className='identity'>
-       <motion.div variants={myVarients} className='UserName' whileHover='zoomIn' initial='outside' animate='zoom' >{userdbdata.userName}</motion.div>
-<motion.div whileHover='zoomIn' variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div> </div>
-<div className='buttonsPfofile' >
-<Button color="primary" onClick={()=>{setProfileImgModal(true)}} className={classes.btn  }  variant='outlined' > Upload Profile Image </Button>
-<Button color='secondary'  onClick={()=>{setFollowerModal(true)}} className={classes.btn } variant='outlined' > Followers </Button>
-<Button color='secondary'  onClick={()=>{setFollowingModal(true)}}  className={classes.btn } variant='outlined' >Followings</Button>  
-
- </div> 
-<Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
-   <FollowersComponent/>      
- </Dialog>
-<Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
-    <FollowingComponent/>
-</Dialog>
-<Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
-<UploadProfileImg/>
-</Dialog>
-
- </div> 
-            <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
- {Posts.map(item =>{
-        return <div className='postInProfile'>
-         <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
-ProfilePic={item.profilePic} userName={item.userName} 
-Timestamp={item.timestamp} /></div>
-    } )}      
-
-            </motion.div>
-        </motion.div>
+     return   <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
+      <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
+      <UploadProfileImg setProfileImageModel={setProfileImgModal} />
+      </Dialog>
+         <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+         <FollowersComponent/>      
+         </Dialog>
+         <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+         <FollowingComponent/>
+         </Dialog>
+        <Stack   margin={4}    direction="row" width={{md : '60vw'}} alignItems="center" justifyContent='space-around' spacing={2} padding='24px 12px'  >
+        <Stack spacing="2px"    >
+        <Tooltip title="upload image"  >
+        <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc} sx={{boxShadow : '2px 2px 4px black'   }}   onClick={()=>setProfileImgModal(true)}></Avatar >
+        </Tooltip>
+  </Stack>  <Stack spacing={2} > 
+                           <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{userdbdata.FirstName}  {userdbdata.lastName}  /     {userdbdata.userName} </h4>
+            <Stack height={{md : '40px'}} direction={{md : 'row'}}   spacing={{xs: 1 , md: '16px'}} >
+                <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
+                <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
+            </Stack>
+        </Stack>
+        </Stack>
+          <Stack spacing={2} >
+            {!Posts.length && <NoPosts/>  }
+        </Stack>
+                <Stack width={{xs : '80vw' , md : '50vw'}}>
+                  {Posts.map(item =>{
+/// person profile 
+         return <div className='postInProfile'>
+          <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+ ProfilePic={item.profilePic} 
+ Timestamp={item.timestamp} /></div>
+     } )}
+            </Stack>
+                
+     </Stack>
  }
-// this is another one profile
-    return (
-     <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile another  gradient-borderAutherProfile ">
-       <div className='header' >
 
-<div className='identity anotherAcoutIdentity'>
-<motion.div variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div>
-    <motion.div className='UserName' variants={myVarients}  initial='outside' animate='zoom' >{UserName}</motion.div>
-    <FormControlLabel control={  <Checkbox 
+
+//  <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile mine gradient-border "> 
+//      <div className='header' >
+//      <div className='identity'>
+//        <motion.div variants={myVarients} className='UserName' whileHover='zoomIn' initial='outside' animate='zoom' >{userdbdata.userName}</motion.div>
+// <motion.div whileHover='zoomIn' variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div> </div>
+// <div className='buttonsPfofile' >
+// <Button color="primary" onClick={()=>{setProfileImgModal(true)}} className={classes.btn  }  variant='outlined' > Upload Profile Image </Button>
+// <Button color='secondary'  onClick={()=>{setFollowerModal(true)}} className={classes.btn } variant='outlined' > Followers </Button>
+// <Button color='secondary'  onClick={()=>{setFollowingModal(true)}}  className={classes.btn } variant='outlined' >Followings</Button>  
+//  </div> 
+{/* <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+   <FollowersComponent/>      
+ </Dialog> */}
+{/* <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+    <FollowingComponent/>
+</Dialog> */}
+{/* <Dialog open={ProfileImgModal} onClose={()=>{setProfileImgModal(false)}}>
+<UploadProfileImg/>
+</Dialog> */}
+
+//  </div> 
+//             <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
+//  {Posts.map(item =>{
+//         return <div className='postInProfile'>
+//          <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+// ProfilePic={item.profilePic} 
+// Timestamp={item.timestamp} /></div>
+//     } )}      
+
+//             </motion.div>
+//         </motion.div>
+
+
+// this is another one profile
+    return (    <Stack sx={{width : "100vw"  , minHeight: '100vh' ,backgroundColor : 'secondary.dark'  , alignItems: 'center' }} >
+         <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+         <FollowersComponent/>      
+         </Dialog>
+         <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+         <FollowingComponent/>
+         </Dialog>
+        <Stack  height="fit-content"  margin={4}  direction="row" width={{xs: '80vw' , md: '60vw'}} justifyContent='space-around' spacing={2} alignItems="center" padding='24px 12px'  >
+        <Stack spacing="2px" alignItems="center"  >
+        <Avatar style={{width : '100px' , height : '100px' }} src={ProfilePicSrc ||SimplePersonImage} sx={{boxShadow : '2px 2px 4px black'   }}  > </Avatar>
+  </Stack>     <Stack spacing={2} > 
+                           <h4 style={{textAlign: 'center'  , fontSize: '24px', textTransform : 'capitalize' , color: '#fff'}} >{UserName} </h4>
+            <Stack  height={{md : '40px'}}  direction={{md: 'row'}}   spacing={{xs: '8px' , md: 2}} >
+                <button className='followingBtn'   onClick={()=>{setFollowingModal(true)}}  > followings </button>
+                <button className='followersBtn'  onClick={()=>{setFollowerModal(true)}}  > followers </button>
+<button  className='outlined' variant="standard" style={{display :'flex' , alignItems: 'center' , justifyContent : 'center', gap : '8px' }} > <Checkbox 
     onChange={AddIconChanged } 
     checked={IsAded}
-    disabled={!AddIcon} color="secondry"
-    className={classes.formControl}
-    icon={<ControlPointDuplicateIcon/>}
-checkedIcon={<CheckCircleIcon className={classes.checked} />}
-></Checkbox>}></FormControlLabel>
-    <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
-   <FollowersComponent/>      
- </Dialog>
-<Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
-    <FollowingComponent/>
-</Dialog>
-</div>
-<div className='buttonsPfofile' >
- <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowerModal(true)}} > Followers </Button>
- <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowingModal(true)}} >Followings</Button>    </div>
-  <motion.div whileHover={{scale: 1.5 }} >
-</motion.div>
+    disabled={!AddIcon}
+    icon={<CheckCircleOutlineIcon/>}
+    checkedIcon={<CheckCircleIcon  />}
+    ></Checkbox><p> {IsAded ? 'followed'  : 'following'}</p>
+</button>
+            </Stack>
+        </Stack>
+        </Stack>
+          <Stack spacing={2} >
+            {!Posts.length && <NoPosts/>  }
+        </Stack>
+                <Stack width={{xs : '80vw' , md : '50vw'}}>
+                  {Posts.map(item =>{
+/// person profile 
+         return <div className='postInProfile'>
+          <Post    likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+ ProfilePic={item.profilePic} 
+ Timestamp={item.timestamp} /></div>
+     } )}
+            </Stack>
+                
+     </Stack>
+)
+//         <motion.div variants={myVarients} initial='hidden' animate='visible' className="profile another  gradient-borderAutherProfile ">
+//        <div className='header' >
+// <div className='identity anotherAcoutIdentity'>
+// <motion.div variants={myVarients} initial='outsideRight' animate='drag' > <Avatar className={classes.avatar}  src={ProfilePicSrc}  /> </motion.div>
+//     <motion.div className='UserName' variants={myVarients}  initial='outside' animate='zoom' >{UserName}</motion.div>
+//     <FormControlLabel control={  <Checkbox 
+//     onChange={AddIconChanged } 
+//     checked={IsAded}
+//     disabled={!AddIcon} color="secondry"
+//     className={classes.formControl}
+//     icon={<ControlPointDuplicateIcon/>}
+// checkedIcon={<CheckCircleIcon className={classes.checked} />}
+// ></Checkbox>}></FormControlLabel>
+//     <Dialog open={FollowerModal} onClose={()=>{setFollowerModal(false)}}>
+//    <FollowersComponent/>      
+//  </Dialog>
+// <Dialog open={FollowingModal} onClose={()=>{setFollowingModal(false)}} >
+//     <FollowingComponent/>
+// </Dialog>
+// </div>
+// <div className='buttonsPfofile' >
+//  <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowerModal(true)}} > Followers </Button>
+//  <Button  color='secondary' variant='contained' className={classes.btn} variant='outlined' onClick={()=>{setFollowingModal(true)}} >Followings</Button>    </div>
+//   <motion.div whileHover={{scale: 1.5 }} >
+// </motion.div>
  
-      </div>
-                 <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
+//       </div>
+//                  <motion.div initial={{x: '100vw'}} animate={{x: 0 , transition: { duration: 0.5 }}} className='postsProfile' >
 
             
- {Posts.map(item =>{
-        return <div className='postInProfile'>
-         <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
-ProfilePic={item.profilePic} userName={item.userName} 
-Timestamp={item.timestamp}/> </div>
-    } )}    
-            </motion.div>
-        </motion.div>
-    )
+//  {Posts.map(item =>{
+//         return <div className='postInProfile'>
+//          <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
+// ProfilePic={item.profilePic} 
+// Timestamp={item.timestamp}/> </div>
+//     } )}    
+//             </motion.div>
+//         </motion.div>
+
 }
 
 export default Acount

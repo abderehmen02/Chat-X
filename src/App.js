@@ -7,9 +7,12 @@ import SignUp from './components/SignUp';
 import {auth, db} from './firebase';
 import Landing from './components/landing';
 import Welcome from './components/welcome';
+import theme from './styling/theme'
 import EmailVereficaion from './components/emailVereficaion';
 import Acount from './components/acount';
 import Search from './components/search';
+import { ThemeProvider } from '@mui/system';
+import AboutPage from './components/about';
 export const Data = React.createContext()
 let today = new Date();
 let yesterday = new Date();
@@ -19,7 +22,7 @@ yesterday.setDate(today.getDate() - 1);
 
 
 function App() { 
-  console.log(process.env);
+  console.log("app");
   // hooks
   const [user, setUser] = useState(null)
   const [Loading, setLoading] = useState(true)
@@ -48,20 +51,22 @@ if(Loading){
   return <h4>Loading...</h4>
 }
 if(!user){
-  return <Router>
+  return<ThemeProvider theme={theme} >
+   <Router>
   <Switch>
    <Route path='/VerifyEmail'><EmailVereficaion/></Route>
-<Route  path='/SignUp'> <SignUp/> </Route>
-<Route path='/SignIn'><SignIn/></Route>
+<Route  path='/regester'> <SignUp/> </Route>
+<Route path='/login'><SignIn/></Route>
+<Route path="/about" ><AboutPage/></Route>
 <Route  path='/'><Welcome/> </Route>
-
  </Switch>
   </Router>
+  </ThemeProvider>
 }
   return (
+    <ThemeProvider theme={theme} >
     <Data.Provider value={{user ,  userdb , userdbdata } }>
      <Router> 
-<div className="app">
   <Switch>
  <Route exact path='/acount/:id'><Acount/></Route>
  <Route exact path='/posts'> 
@@ -69,8 +74,8 @@ if(!user){
   <Route exact path='/search'> <Search/></Route>
    <Route   path='/'><Landing/></Route>
  </Switch>
- </div>
 </Router></Data.Provider>
+</ThemeProvider>
   )
 }
 

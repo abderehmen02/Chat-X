@@ -19,7 +19,6 @@
   height: 100px;
   background-size: cover;
   background-position: center;
-  margin: 5vh;
 }
 .logoOverlay {
   width: 100px;
@@ -228,10 +227,9 @@ label {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 2px 2px 5px white;
-  height: 50vh;
-  width: 50vw;
-  background-color: wheat;
+  border-radius:  8px;
+  padding : 40px 80px ;
+  background-color: white ; 
 }
 .verifyBtns {
   display: flex;

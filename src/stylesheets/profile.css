@@ -267,3 +267,60 @@
     border-radius: 5px;
   }
 }
+.followersBtn ,  .outlined{
+  min-width : 200px ;
+    background-color : white;
+    color : black ;
+    cursor: pointer ;
+    width: 'fit-content' ;
+    border-radius : 8px ;
+    padding-top : 8px  ;
+    padding-bottom : 8px ;
+    padding-right : 30px;
+    padding-left : 30px ;
+    border: 1px solid black ;
+    
+}
+.followingBtn {
+              background-color: #53E05D ;
+                  color: #5222E0 ;
+                  border: 1px solid black ;
+                  border-radius: 8px;
+                  padding-top: 8px ;
+                  padding-bottom: 8px ;
+                  padding-right: 30px ;
+                  cursor: pointer;
+                  padding-left: 30px ;
+                  min-width: 200px ;
+}
+.followersBtn:hover , .outlined:hover{
+                background-color: black ;
+                    color: white ;
+                    border: 1px solid #fff ;
+}
+.followingBtn:hover{
+        background-color: #289430 ;
+            color:#fff ;
+}
+.followingBtn::hove {
+  color: red
+}
+
+
+.contained{
+              background-color: #53E05D;
+                color: #5222E0;
+                border: 1px solid black;
+                border-radius: 8px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-right: 60px;
+                cursor: pointer;
+                padding-left: 60px;
+                min-width: 200px;
+}
+.contained:hover{
+
+    background-color: #289430;
+    color: #fff;
+}

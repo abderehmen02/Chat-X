@@ -1,12 +1,12 @@
 import React , {useState , useContext } from 'react'
-import { Button } from '@material-ui/core'
+import { Button , Stack , LinearProgress, Typography } from '@mui/material'
 import { motion  , AnimatePresence} from 'framer-motion'
 import shortid from 'shortid'
 import { db, FirebaseStorage , auth } from '../firebase'
 import { useHistory } from 'react-router-dom'
 import 'firebase/firestore'
 import { Data } from '../App'
-function UploadProfileImg() {
+function UploadProfileImg({setProfileImageModel}) {
     //hooks
 const [Image, setImage] = useState(null)
 const [User, setUser] = useState(null)
@@ -14,7 +14,7 @@ const [Loading, setLoading] = useState(true)
 const [Upload, setUpload] = useState(0)
 const history = useHistory()
 const data = useContext(Data).user
-
+const [Message, setMessage] = useState("")
  // functions declarations
 const handleFiles = (event)=>{
 if(event.target.files[0]){
@@ -35,34 +35,33 @@ const id = shortid.generate()
    (url) =>{     db.collection("users").doc(data.uid).update({
     ProfilePic : url   ,
          }).then(()=>{
-             setImage(null)  ; setUpload(0) ; 
+             setImage(null)  ; setUpload(0) ; setProfileImageModel(false)
          })
     } 
      )
        }   )
   
 }
+console.log(Message)
 // functios excuting
+return(<Stack padding={2} spacing={2} bgcolor='secondary.light' >
+<LinearProgress value={Upload} variant="determinate"  />
+<Stack direction={{md : 'row'}} spacing={{md : 2 , xs: 1}} >
+<Button disabled={!Image} onClick={uploadFile} variant="contained" > Submit </Button> 
+<Button
+  variant="outlined"
+  component="label"
+>
+  Upload File
+  <input
+    type="file"
+    hidden
+    onChange={(e)=>handleFiles(e)}
+  />
+</Button></Stack>
+<Typography variant='h3' color="primary.dark" >{Message}</Typography> 
+</Stack>
 
-const myVarients = {
-    drag: {
-y: 0 , 
-opacity: 1 , 
-scale: 1,
-transition: {duration: 1} 
-    } , 
-    hidden : {
-        y : 200 , 
-        opacity: 0.5 , 
-        scale: 0.5 
-    }
-}
-return(<motion.div variants={myVarients} initial='hidden' animate='drag' className='uploadProfileImageComponent' >
-<progress value={Upload} className='profileImageProgress' ></progress>
-<div className='uploadbtn' >
-<Button onClick={uploadFile} > Upload </Button> </div>
-<input type='file' onChange={handleFiles} className='ProfileImageFileInput' ></input>
-</motion.div>
 )  
 }
 
