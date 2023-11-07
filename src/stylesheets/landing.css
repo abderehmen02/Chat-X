@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  width: 50%;
+  width: 100%;
 }
 .verifyMessage {
   display: flex;

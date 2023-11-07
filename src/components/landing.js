@@ -97,16 +97,16 @@ const VerifyEmail = ()=>{
 }
 
     return (
-        <Stack  sx={{backgroundColor : 'secondary.dark' , width : '100vw' , minHeight: '100vh' , alignItems: 'center'  }} > 
+        <Stack  sx={{backgroundColor : 'secondary.dark'  , width : '100vw' , minHeight: '100vh' , alignItems: 'center' , gap : "8px"  }} > 
         <Nav logOut={logOut} displayList={displayList} setDisplayList={setDisplayList} />
         <Modal open={VerrifyModal} onClose={()=>{setVerrifyModal(false)}}>
            <VerifyEmail/>
         </Modal>
         <UploadImage/>
         <Verifymessage onClick={()=>{setDisplayList(false)}} className="verify"/>
-<motion.div onClick={()=>{setDisplayList(false)}}  className='posts' initial={{x: '100vw'}} animate={{x: 0 , transition: {duration: 0.5}}} >
+<div onClick={()=>{setDisplayList(false)}}   className='posts '   >
 <Posts/>
-</motion.div>
+</div>
         </Stack>
     )
 //             <div className='PageHeader'>

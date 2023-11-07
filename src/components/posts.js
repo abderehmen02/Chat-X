@@ -41,7 +41,7 @@ db.collection('users').doc(item).collection('posts').where('timestamp' , '>' , f
 
     return (
 
-        <Stack  width="100%" >
+        <Stack  width="100%" sx={{alignItems : "center" , justifyContent : "center"}} >
     {!Posts.length && <NoPosts/> }
     {Posts.map(item =>{
         return <div className='SinglePostDiv' > <Post likes={item.likes} postkey={item.key} userName={item.UserName} image={item.image} userId={item.userId} caption={item.caption}
